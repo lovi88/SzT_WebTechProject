@@ -1,0 +1,118 @@
+﻿<!--Main Navigation-->
+<nav class="navbar navbar-inverse navbar-static-top container-fluid" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MainMenu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Lovas WebShop</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse" id="MainMenu">
+
+            <!--Menu Links-->
+            <ul class="nav navbar-nav" data-bind="foreach: router.navigationModel">
+                <li data-bind="css: { active: isActive }">
+                    <a data-bind="attr: { href: hash }, html: title"></a>
+                </li>
+            </ul>
+
+
+
+            <!--User Profile-->
+            <p class="navbar-text navbar-right">Signed in as UserName</p>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        UserName <span class="glyphicon glyphicon-cog"></span><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!--Cart-->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Cart <span class="glyphicon glyphicon-shopping-cart"></span><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">View Cart</a></li>
+                        <li><a href="#">Add Product to Cart</a></li>
+                        <li><a href="#">Checkout Cart and Payment</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Kosármban lévő termék 1</a></li>
+                        <li><a href="#">Kosármban lévő termék 2</a></li>
+                        <li><a href="#">Kosármban lévő termék i</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!--Search Bar-->
+
+
+            <div class="col-sm-3 col-md-3 pull-right">
+                <form class="navbar-form" role="search" data-bind="submit:search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Product" name="srch-term" id="srch-term">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"> <span class="glyphicon glyphicon-search"></span> </button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Összetett keresés</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--Main Navigation End-->
+<!--Breadcrumbs-->
+
+<ol class="breadcrumb">
+    <li><a href="#">Teszt 1 breadcrumb</a></li>
+    <li><a href="#">Teszt 2</a></li>
+    <li class="active">Teszt 3</li>
+</ol>
+
+<!--Breadcrumbs End-->
+
+
+
+
+<div class="container-fluid page-host">
+    <!--Sidebar Pills Menu-->
+    <div class="col-md-3" style="display:block"> <!--display:none/block bindingolható lesz, ha valamelyik aloldal rejtené-->
+        <ul class="nav nav-pills nav-stacked">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#">Profile</a></li>
+        </ul>
+    </div>
+
+
+    <!--Content-->
+    <div class="col-md-9" data-bind="router: { transition:'entrance', cacheViews:true }">
+
+
+    </div>
+
+</div>

@@ -36,7 +36,7 @@ class Dictionary {
 	 * TranslateText
 	 */
 	public TranslateText(text: string, from: Languages) {
-		return "text: " + text
+		return "Tr: " + text
 	}
 	
 }

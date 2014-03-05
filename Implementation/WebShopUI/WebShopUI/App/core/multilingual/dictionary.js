@@ -35,7 +35,7 @@ var Dictionary = (function () {
     * TranslateText
     */
     Dictionary.prototype.TranslateText = function (text, from) {
-        return "text: " + text;
+        return "Tr:" + text;
     };
     return Dictionary;
 })();

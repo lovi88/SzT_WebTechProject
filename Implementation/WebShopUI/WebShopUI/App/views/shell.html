@@ -13,7 +13,7 @@
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse navbar-ex1-collapse" id="MainMenu">
+        <div class="collapse navbar-collapse " id="MainMenu">
 
             <!--Menu Links-->
             <ul class="nav navbar-nav" data-bind="foreach: router.navigationModel">
@@ -23,23 +23,45 @@
             </ul>
 
 
-
             <!--User Profile-->
-            <p class="navbar-text navbar-right">Signed in as UserName</p>
-            <ul class="nav navbar-nav navbar-right">
+            <p data-bind="visible: user.authenticated" class="navbar-text navbar-right">Signed in as UserName</p>
+            <ul data-bind="visible: user.authenticated" class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         UserName <span class="glyphicon glyphicon-cog"></span><b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">Edit Billing Data</a></li>
+                        <li><a href="#">Edit Profile Data</a></li>
                         <li class="divider"></li>
                         <li><a href="#">Sign Out</a></li>
                     </ul>
                 </li>
             </ul>
+
+
+
+            <!--Sign In/Up-->
+            <ul data-bind="visible: !user.authenticated" class="nav navbar-nav navbar-right">
+                <li><a href="#">Sign Up</a></li>
+                <li class="divider"></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                        <form method="post" action="login" accept-charset="UTF-8">
+                            <input style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="username">
+                            <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="password">
+                            <input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1">
+                            <label for="user_remember_me"> Remember me</label>
+                            <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
+                            <label style="text-align:center;margin-top:5px"></label>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+
+
+
 
             <!--Cart-->
             <ul class="nav navbar-nav navbar-right">
@@ -60,8 +82,6 @@
             </ul>
 
             <!--Search Bar-->
-
-
             <div class="col-sm-3 col-md-3 pull-right">
                 <form class="navbar-form" role="search" data-bind="submit:search">
                     <div class="input-group">
@@ -101,10 +121,40 @@
 
 <div class="container-fluid page-host">
     <!--Sidebar Pills Menu-->
-    <div class="col-md-3" style="display:block"> <!--display:none/block bindingolható lesz, ha valamelyik aloldal rejtené-->
+    <div class="col-md-3" style="display:block">
+        <!--display:none/block bindingolható lesz, ha valamelyik aloldal rejtené-->
         <ul class="nav nav-pills nav-stacked">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#">Profile</a></li>
+            <li class="">
+                <a href="#">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span data-bind="text: activeType.parentType.typeName"></span>
+                </a>
+            </li>
+
+            <li class="active">
+                <a href="#" data-bind="text: activeType.typeName"></a>
+            </li>
+
+            <li>
+                <a href="#">
+                    <span class="text-warning" data-bind="click: newType"> Admin: Create New SubType </span>
+                </a>
+            </li>
+
+            <!-- ko foreach: activeType.subTypes -->
+
+            <li class="">
+                <a href="#">
+
+                    <span class="glyphicon glyphicon-wrench" data-bind="click: $root.modifyType"></span>
+                    <span class="glyphicon glyphicon-remove" data-bind="click: $root.deleteType"></span>
+
+                    <span data-bind="text: typeName"></span>
+                </a>
+            </li>
+
+            <!-- /ko -->
+
         </ul>
     </div>
 

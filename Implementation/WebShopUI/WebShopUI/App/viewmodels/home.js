@@ -2,14 +2,11 @@
     var allproducts = function () {
         var that = this;
 
-        this.displayName = dict.TranslateText('Welcome to the Durandal Starter Kit!', 1);
+        this.displayName = dict.TranslateText('Welcome to the Lovas WebShop!', 1);
         this.displayToCart = dict.TranslateText('Add to Cart',1);
 
 
         this.Products = ko.observableArray();
-
-
-
 
 
         this.isTestMode = true;

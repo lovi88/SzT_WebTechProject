@@ -1,17 +1,22 @@
-﻿define(['plugins/router', 'durandal/app', 'durandal/system'], function (router, app, sys) {
+﻿define(['plugins/router', 'durandal/app', 'durandal/system', "viewmodels/customModal"], function (router, app, sys, modal) {
 
     var self = this;
 
-    function ProductType(parentType, typeName, typeId, productCount, subTypes) {
+    function ProductType(mainType, parentType, typeName, typeId, productCount, subTypes) {
+        this.mainType = mainType;
         this.parentType = parentType;
         this.typeName = typeName;
         this.typeId = typeId;
         this.productCount = productCount;
         this.subTypes = subTypes;
+
+        this.hash = 
+          "#Products/" + this.mainType + "/" + this.typeName + "/" + this.typeId;
+        
     }
 
 
-    var subs = [
+    var subs1 = [
         {
             parentType:1,
             typeName: dict.TranslateText("Adatbázis - kezelés", 0),
@@ -62,14 +67,21 @@
         }
     ];
 
+    var subs = [];
+
+    subs.push(new ProductType("Books", "Books", "Adatbázis - kezelés", 2, 18, null));
+
+    sys.log(subs);
+
     var parent = new ProductType(
+        "Books",
         { typeId: 0 },
         dict.TranslateText("Könyv", 0),
         1,
         null
     );
 
-    var active = new ProductType(parent, dict.TranslateText("Számítástechnika, Internet", 0), 2, 1500, subs);
+    var active = new ProductType("Books",parent, dict.TranslateText("Számítástechnika, Internet", 0), 2, 1500, subs);
 
     return {
         router: router,
@@ -97,14 +109,14 @@
             });
         },
         modifyType: function(productType) {
-            app.showMessage('mock...');
+            //app.showMessage('mock...');
 
             //app.productType("asd").then(function (dialogResult) {
             //    // use dialogResult.checkedValue here
             //});
             //("message", "title", ["y", "n"])
 
-            //app.showDialog("viewmodels/customModal");
+            app.showDialog(new modal({title:"alma"}));
 
             
 
@@ -116,11 +128,14 @@
         },
         activate: function () {
             router.map([
-                { route: '', title:'Home', moduleId: 'viewmodels/home', nav: true },
-                { route: 'Products/Books', title: 'Books', moduleId: 'viewmodels/home', nav: true },
-                { route: 'Products/Antique', title: 'Antique', moduleId: 'viewmodels/home', nav: true },
-                { route: 'Products/Movies', title: 'Movies', moduleId: 'viewmodels/home', nav: true },
-                { route: 'Products/Music', title: 'Music', moduleId: 'viewmodels/home', nav: true }
+                { route: '', title: 'Home', moduleId: 'viewmodels/products', nav: true },
+                { route: 'Product/:productName/:ProductId',moduleId: 'viewmodels/product', nav: false },
+                { route: 'Products', moduleId: 'viewmodels/products', nav: false },
+                { route: 'Products/:MainCat(/:ActCat/:ActCatID)', moduleId: 'viewmodels/products', nav: false },
+                { route: 'Products/Books', title: 'Books', moduleId: 'viewmodels/products', nav: true },
+                { route: 'Products/Antique', title: 'Antique', moduleId: 'viewmodels/products', nav: true },
+                { route: 'Products/Movies', title: 'Movies', moduleId: 'viewmodels/products', nav: true },
+                { route: 'Products/Music', title: 'Music', moduleId: 'viewmodels/products', nav: true }
             ]).buildNavigationModel();
             
             

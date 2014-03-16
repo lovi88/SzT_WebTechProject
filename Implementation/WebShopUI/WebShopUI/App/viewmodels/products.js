@@ -35,6 +35,14 @@
 
         }
 
+        this.activate = function (MainCat, ActCat, ActCatID) {
+            sys.log("products");
+            sys.log("MainCat: " + MainCat);
+            sys.log("ActCat: " + ActCat);
+            sys.log("ActCatID: " + ActCatID);
+
+        }
+
     };
 
 

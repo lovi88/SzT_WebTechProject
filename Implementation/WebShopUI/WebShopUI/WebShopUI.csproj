@@ -77,7 +77,8 @@
     <Content Include="App\core\multilingual\dictionary.ts" />
     <Content Include="App\main.js" />
     <Content Include="App\viewmodels\flickr.js" />
-    <Content Include="App\viewmodels\home.js" />
+    <Content Include="App\viewmodels\product.js" />
+    <Content Include="App\viewmodels\products.js" />
     <Content Include="App\viewmodels\oneTextDialog.js" />
     <Content Include="App\viewmodels\customModal.js" />
     <Content Include="App\viewmodels\shell.js" />
@@ -85,7 +86,8 @@
     <Content Include="App\viewmodels\welcome.js" />
     <Content Include="App\views\detail.html" />
     <Content Include="App\views\flickr.html" />
-    <Content Include="App\views\home.html" />
+    <Content Include="App\views\product.html" />
+    <Content Include="App\views\products.html" />
     <Content Include="App\views\oneTextDialog.html" />
     <Content Include="App\views\customModal.html" />
     <Content Include="App\views\shell.html" />

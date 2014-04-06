@@ -2,26 +2,13 @@
 
     var self = this;
 
-    function ProductType(mainType, parentType, typeName, typeId, productCount, subTypes) {
-        this.mainType = mainType;
-        this.parentType = parentType;
-        this.typeName = typeName;
-        this.typeId = typeId;
-        this.productCount = productCount;
-        this.subTypes = subTypes;
-
-        this.hash = 
-          "#Products/" + this.mainType + "/" + this.typeName + "/" + this.typeId;
-        
-    }
-
 
     var subs1 = [
         {
-            parentType:1,
+            parentType: 1,
             typeName: dict.TranslateText("Adatbázis - kezelés", 0),
             typeId: 2,
-            productCount : 70
+            productCount: 70
         },
         {
             parentType: 1,
@@ -81,18 +68,26 @@
         null
     );
 
-    var active = new ProductType("Books",parent, dict.TranslateText("Számítástechnika, Internet", 0), 2, 1500, subs);
+    var active = new ProductType("Books", parent, dict.TranslateText("Számítástechnika, Internet", 0), 2, 1500, subs);
+
+    var testCrumbs = [
+            { name: "Home", isActive: false, link: "#" },
+            { name: "TestLink", isActive: false, link: "#" },
+            { name: "TestLast", isActive: true, link: "#" }
+    ];
 
     return {
         router: router,
+        activeScreen: ko.observable("viewmodels/products"),
         user: {
-            userName : "Pista",
-            authenticated : true
+            userName: "Pista",
+            authenticated: true
         },
         activeType: active,
-        newType: function() {
+        newType: function () {
             app.showMessage('mock...');
         },
+        breadcrumbs: ko.observableArray(testCrumbs),
         deleteType: function (t) {
             var message = "Biztos törli: " + t.typeName + "? (mock, nem működik)";
             message = dict.TranslateText(message, 0);
@@ -108,7 +103,7 @@
                 sys.log(dialogResult);
             });
         },
-        modifyType: function(productType) {
+        modifyType: function (productType) {
             //app.showMessage('mock...');
 
             //app.productType("asd").then(function (dialogResult) {
@@ -116,12 +111,13 @@
             //});
             //("message", "title", ["y", "n"])
 
-            app.showDialog(new modal({title:"alma"}));
+            app.showDialog(new modal({ title: "alma" }));
 
-            
+
 
         },
-        search: function() {
+        
+        search: function () {
             //It's really easy to show a message box.
             //You can add custom options too. Also, it returns a promise for the user's response.
             app.showMessage('Search not yet implemented...');
@@ -129,17 +125,19 @@
         activate: function () {
             router.map([
                 { route: '', title: 'Home', moduleId: 'viewmodels/products', nav: true },
-                { route: 'Product/:productName/:ProductId',moduleId: 'viewmodels/product', nav: false },
+                { route: 'Product/:productName/:ProductId', moduleId: 'viewmodels/product', nav: false },
                 { route: 'Products', moduleId: 'viewmodels/products', nav: false },
-                { route: 'Products/:MainCat(/:ActCat/:ActCatID)', moduleId: 'viewmodels/products', nav: false },
-                { route: 'Products/Books', title: 'Books', moduleId: 'viewmodels/products', nav: true },
-                { route: 'Products/Antique', title: 'Antique', moduleId: 'viewmodels/products', nav: true },
-                { route: 'Products/Movies', title: 'Movies', moduleId: 'viewmodels/products', nav: true },
-                { route: 'Products/Music', title: 'Music', moduleId: 'viewmodels/products', nav: true }
+                { route: 'Products/:MainCat/:MainCatId(/:ActCat/:ActCatID)', moduleId: 'viewmodels/products', nav: false },
+                { route: 'Products/Books/1', title: 'Books', moduleId: 'viewmodels/products', nav: true },
+                { route: 'Products/Antique/2', title: 'Antique', moduleId: 'viewmodels/products', nav: true },
+                { route: 'Products/Movies/3', title: 'Movies', moduleId: 'viewmodels/products', nav: true },
+                { route: 'Products/Music/4', title: 'Music', moduleId: 'viewmodels/products', nav: true }
             ]).buildNavigationModel();
-            
-            
+
+
             return router.activate();
         }
+
+
     };
 });

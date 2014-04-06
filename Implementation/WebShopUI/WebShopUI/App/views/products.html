@@ -3,13 +3,15 @@
 
 <button data-bind="visible: isTestMode, click: generateTestProducts">genTesztProducts</button>
 
+
 <div data-bind="foreach: Products">
 
     <div class="col-sm-6 col-md-3">
 
         <div class="col-sm-3 col-md-2" style="min-width:200px;">
-            <a href="#" class="thumbnail">
-                <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNzEiIGhlaWdodD0iMTgwIj48cmVjdCB3aWR0aD0iMTcxIiBoZWlnaHQ9IjE4MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9Ijg1LjUiIHk9IjkwIiBzdHlsZT0iZmlsbDojYWFhO2ZvbnQtd2VpZ2h0OmJvbGQ7Zm9udC1zaXplOjEycHg7Zm9udC1mYW1pbHk6QXJpYWwsSGVsdmV0aWNhLHNhbnMtc2VyaWY7ZG9taW5hbnQtYmFzZWxpbmU6Y2VudHJhbCI+MTcxeDE4MDwvdGV4dD48L3N2Zz4=" style="height: 180px; width: 100%; display: block;" data-src="holder.js/100%x180" alt="100%x180">
+            <a href="#" class="thumbnail" data-bind="attr: { href: URLPath }">
+                
+                <img src="" alt="" data-bind="attr: {src: smallImg, alt: caption}" style="display: block;" />
             </a>
         </div>
 
@@ -17,15 +19,17 @@
             <div class="caption">
                 <h3 data-bind="text: productName">Product Name</h3>
 
+                <div data-bind="text: caption"></div>
+
                 <span data-bind="text: displayPrice"></span>:
-                <span data-bind="text: price"></span>
+                <span data-bind="text: price"></span> <br />
 
                 <span data-bind="text: displayDiscountPrice"></span>:
                 <strong data-bind="text: discountPrice"></strong>
 
 
                 <p>
-                    <a href="#" class="btn btn-primary" role="button" data-bind="text: $parent.displayToCart"></a>
+                    <a href="#" class="btn btn-primary" role="button" data-bind="text: $parent.displayToCart, click: $parent.addToChart"></a>
                 </p>
             </div>
         </div>

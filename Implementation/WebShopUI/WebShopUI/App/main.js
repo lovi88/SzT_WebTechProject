@@ -1,4 +1,5 @@
 ﻿requirejs.config({
+   // urlArgs: "bust=" + (new Date()).getTime(), //Teszthez csak
     paths: {
         'text': '../Scripts/text',
         'durandal': '../Scripts/durandal',

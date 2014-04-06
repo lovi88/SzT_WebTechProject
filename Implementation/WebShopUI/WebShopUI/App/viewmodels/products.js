@@ -1,4 +1,6 @@
-﻿define(['durandal/system'], function (sys) {
+﻿define(['durandal/system', 'durandal/app', 'viewmodels/breadcrumb'], function (sys, app, breadcrumb) {
+
+
     var allproducts = function () {
         var that = this;
 
@@ -8,6 +10,9 @@
 
         this.Products = ko.observableArray();
 
+        this.addToChart = function (data) {
+            alert(data.productName);
+        }
 
         this.isTestMode = true;
         this.generateTestProducts = function (times) {
@@ -16,16 +21,8 @@
             }
 
             for (var i = 0; i < times; i++) {
-
-                var actual = {
-                    productID: i,
-                    productName: "pname" + i,
-                    maker: "pisti" + i,
-                    price: 25 * i,
-                    displayPrice: dict.TranslateText("Price", 1),
-                    discountPrice: 20 * i,
-                    displayDiscountPrice: dict.TranslateText("Discounted", 1)
-                }
+                                //(productID, productName, creator, price, discountPrice)
+                actual = new product(i, "pname" + i, "creator" + i, 25 * i, 20 * i);
 
                 sys.log(actual);
 
@@ -34,13 +31,10 @@
             }
 
         }
-
-        this.activate = function (MainCat, ActCat, ActCatID) {
-            sys.log("products");
-            sys.log("MainCat: " + MainCat);
-            sys.log("ActCat: " + ActCat);
-            sys.log("ActCatID: " + ActCatID);
-
+        //:MainCat/:MainCatId(/:ActCat/:ActCatID)
+        this.activate = function (MainCat, MainCatId, ActCat, ActCatID) {
+            
+            //breadcrumb.breadcrumbs.push({ name: "TTT", isActive: true, link: "#" })
         }
 
     };

@@ -108,20 +108,14 @@
 <!--Main Navigation End-->
 <!--Breadcrumbs-->
 
-<ol class="breadcrumb">
-    <li><a href="#">Teszt 1 breadcrumb</a></li>
-    <li><a href="#">Teszt 2</a></li>
-    <li class="active">Teszt 3</li>
-</ol>
+<div data-bind="compose:'viewmodels/breadcrumb'"></div>
 
 <!--Breadcrumbs End-->
 
 
-
-
 <div class="container-fluid page-host">
     <!--Sidebar Pills Menu-->
-    <div class="col-md-3" style="display:block">
+    <div class="col-md-3" data-bind="if: activeType">
         <!--display:none/block bindingolható lesz, ha valamelyik aloldal rejtené-->
         <ul class="nav nav-pills nav-stacked">
             <li class="">
@@ -162,7 +156,7 @@
 
 
     <!--Content-->
-    <div class="col-md-9" data-bind="router: { transition:'entrance', cacheViews:true }">
+    <div class="col-md-9" data-bind="router: { transition:'entrance', cacheViews:false, preserveContext:true }">
 
 
     </div>

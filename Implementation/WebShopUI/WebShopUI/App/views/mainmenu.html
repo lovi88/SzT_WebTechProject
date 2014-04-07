@@ -1,0 +1,113 @@
+﻿<nav class="navbar navbar-inverse navbar-static-top container-fluid" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MainMenu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Lovas WebShop</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse " id="MainMenu">
+
+            <!--Menu Links-->
+            <ul class="nav navbar-nav" data-bind="foreach: router.navigationModel">
+
+            <!-- router.isNavigating -->
+                <li data-bind="css: { active: isActive }">
+                    <a data-bind="attr: { href: hash }, html: title"></a>
+                </li>
+            </ul>
+
+
+            <!--User Profile-->
+            <p data-bind="visible: user.authenticated" class="navbar-text navbar-right">
+                Signed in as
+                <span data-bind="text: user.userName"></span>
+            </p>
+            <ul data-bind="visible: user.authenticated" class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        UserName <span class="glyphicon glyphicon-cog"></span><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Edit Billing Data</a></li>
+                        <li><a href="#">Edit Profile Data</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+
+
+            <!--Sign In/Up-->
+            <ul data-bind="visible: !user.authenticated" class="nav navbar-nav navbar-right">
+                <li><a href="#">Sign Up</a></li>
+                <li class="divider"></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
+                    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                        <form method="post" action="login" accept-charset="UTF-8">
+                            <input style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="username">
+                            <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="password">
+                            <input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1">
+                            <label for="user_remember_me"> Remember me</label>
+                            <input class="btn btn-primary btn-block" type="submit" id="sign-in" value="Sign In">
+                            <label style="text-align:center;margin-top:5px"></label>
+                        </form>
+                    </div>
+                </li>
+            </ul>
+
+
+
+
+            <!--Cart-->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Cart <span class="glyphicon glyphicon-shopping-cart"></span><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">View Cart</a></li>
+                        <li><a href="#">Add Product to Cart</a></li>
+                        <li><a href="#">Checkout Cart and Payment</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Kosármban lévő termék 1</a></li>
+                        <li><a href="#">Kosármban lévő termék 2</a></li>
+                        <li><a href="#">Kosármban lévő termék i</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!--Search Bar-->
+            <div class="col-sm-3 col-md-3 pull-right">
+                <form class="navbar-form" role="search" data-bind="submit:search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Product" name="srch-term" id="srch-term">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"> <span class="glyphicon glyphicon-search"></span> </button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Összetett keresés</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<!--<h1 data-bind="text: router.activeInstruction().config.title"></h1>-->

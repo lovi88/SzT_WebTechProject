@@ -5,18 +5,13 @@
             { name: "TestLink", isActive: false, link: "#" },
             { name: "TestLast", isActive: true, link: "#" }
     ];
-
-    sys.log(testCrumbs);
-
-    app.on('breadcurb:product').then(function (product) {
-        alert("productBreadcrumb");
-    });
-
+    
     return {
         breadcrumbs: ko.observableArray(testCrumbs),
         productIsLast: function (product) {
             
         },
+
         productTypeIsLast: function (ProductType) {
 
         }

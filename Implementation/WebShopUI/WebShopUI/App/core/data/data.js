@@ -1,31 +1,88 @@
-﻿var data = {
-    getProduct: function (ProductId) {
-        return new product(ProductId, "teszt", "CreatorPista", 50, 25, "http://www.clipartsfree.net/vector/medium/18177-tv-test-screen-art-design.png");
+﻿var BusinesLogic = {
+    productController: {
+        getProduct: function (ProductId) {
+            return new product(ProductId, "teszt", "CreatorPista", 50, 25, "http://www.clipartsfree.net/vector/medium/18177-tv-test-screen-art-design.png");
+        },
+
+        getProducts: function (ProductTypeId) {
+            return [];
+        },
+
+        getProductsByType: function (ProductTypeId) {
+            return [];
+        },
+
+        createProduct: function (product) {
+
+        },
+
+        modifyProduct: function (product) {
+
+        },
+
+        deleteProduct: function (product) {
+
+        }
+
     },
 
-    getProducts: function (ProductTypeId) {
-        return [];
+
+    productTypeController: {
+        getRootProductTypes: function () {
+            var names = ["Books", "Antique"];
+            var ids = [1, 2];
+
+            var ret = [];
+
+            for (var i in names) {
+                ret.push(new ProductType(null, null, names[i], ids[i], 20, null));
+            }
+
+            return ret;
+        },
+
+        getChildProductTypes: function (ProductTypeId) {
+
+        },
+
+        getAncestorTypes: function (ProductTypeId) {
+
+        },
+
+        createProductType: function (ProductType) {
+
+        },
+
+        modifyProductType: function (ProductType) {
+
+        },
+
+        deleteProductType: function (ProductType) {
+
+        }
     },
 
-    getProductsByType: function (ProductTypeId) {
-        return [];
-    },
 
-    getRootProductTypes: function () {
-        return [];
-    },
+    UserController: {
+        getUser: function (UserName, Password) {
 
-    getChildProductTypes: function (ProductTypeId) {
+        },
 
-    },
+        createUser: function (user) {
 
-    getAncestorTypes: function (ProductTypeId) {
+        },
 
-    },
+        modifyUser: function (user) {
 
-    getUser: function (UserName, Password) {
+        },
+
+        deleteUser: function (user) {
+
+        }
 
     }
+
+
 }
 
 function ProductType(mainType, parentType, typeName, typeId, productCount, subTypes) {

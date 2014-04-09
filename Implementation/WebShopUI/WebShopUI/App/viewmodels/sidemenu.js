@@ -69,6 +69,11 @@
 
     return {
         activeType: active,
+        parentType: null,
+        setParentType: function (parentType) {
+
+        },
+
         newType: function () {
             app.showMessage('mock...');
         },
@@ -103,6 +108,7 @@
         activate: function () {
             //sys.log("sidemenu");
             //sys.log(active);
-        }
-    }
+        },
+
+    };
 });

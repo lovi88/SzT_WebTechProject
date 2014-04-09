@@ -1,16 +1,14 @@
 ﻿define(['durandal/system', 'durandal/app', 'plugins/router', 'busineslogic/productTypeController'], function (sys, app, router, productTypeController) {
 
     var routes = [
-                { route: '', title: 'Home', moduleId: 'viewmodels/products', nav: true },
-                { route: 'Zebra', title: 'Zebra', moduleId: 'viewmodels/products', nav: true },
+                { route: ['','#','Home'], title: 'Home', moduleId: 'viewmodels/products', nav: true },
                 { route: 'Product/:productName/:ProductId', moduleId: 'viewmodels/product', nav: false },
                 { route: 'Products', moduleId: 'viewmodels/products', nav: false },
-                { route: 'Products/:MainCat/:MainCatId(/:ActCat/:ActCatID)', moduleId: 'viewmodels/products', nav: false },
                 { route: 'Sign', moduleId: 'viewmodels/signIn', nav: false }
 
     ];
 
-    function getMainMenuRootTypes () {
+    function genMainMenuRootTypes () {
         rootTypes = productTypeController.getRootProductTypes();
 
         for (var key in rootTypes) {
@@ -29,6 +27,10 @@
 
     }
 
+    function genMainMenuDefaults() {
+        routes.push({ route: 'Products/:MainCat/:MainCatId(/:ActCat/:ActCatID)', moduleId: 'viewmodels/products', nav: false });
+    }
+
     return {
         router: router,
         user: {
@@ -45,9 +47,8 @@
         activate: function () {
             sys.log("mainMenu");
 
-            getMainMenuRootTypes();
-
-            sys.log(routes);
+            genMainMenuRootTypes();
+            genMainMenuDefaults();
 
             router.map(routes)
                 .buildNavigationModel()

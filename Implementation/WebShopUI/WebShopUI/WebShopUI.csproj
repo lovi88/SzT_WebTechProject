@@ -73,6 +73,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App\busineslogic\productController.js" />
+    <Content Include="App\busineslogic\productTypeController.js" />
+    <Content Include="App\busineslogic\UserController.js" />
     <Content Include="App\core\data\data.js" />
     <Content Include="App\core\multilingual\dictionary.js" />
     <Content Include="App\core\multilingual\dictionary.ts" />

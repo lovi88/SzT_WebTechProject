@@ -1,4 +1,4 @@
-﻿define(['durandal/system', 'durandal/app', 'plugins/router'], function (sys, app, router) {
+﻿define(['durandal/system', 'durandal/app', 'plugins/router', 'busineslogic/productTypeController'], function (sys, app, router, productTypeController) {
 
     var routes = [
                 { route: '', title: 'Home', moduleId: 'viewmodels/products', nav: true },
@@ -11,7 +11,7 @@
     ];
 
     function getMainMenuRootTypes () {
-        rootTypes = BusinesLogic.productTypeController.getRootProductTypes();
+        rootTypes = productTypeController.getRootProductTypes();
 
         for (var key in rootTypes) {
             tname = rootTypes[key].typeName;
@@ -57,5 +57,6 @@
 
             return router.activate();
         }
+
     };
 });

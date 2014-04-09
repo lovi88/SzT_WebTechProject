@@ -1,7 +1,7 @@
-﻿define(['durandal/system'], function (system) {
+﻿define(['durandal/system', 'busineslogic/productController'], function (system,productController) {
     return {
         activate: function (productName, ProductId) {
-            this.product = data.getProduct(ProductId);
+            this.product = productController.getProduct(ProductId);
             system.log(product);
         }
     }

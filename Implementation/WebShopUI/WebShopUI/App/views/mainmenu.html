@@ -8,7 +8,14 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
+
+            <!-- Brand -->
             <a class="navbar-brand" href="#">Lovas WebShop</a>
+
+            <div class="loader pull-right" data-bind="css: { visible: router.isNavigating }">
+                <i class="icon-spinner icon-2x icon-spin fa fa-spinner fa-spin" style="color:#fff"></i>
+            </div>
+
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -17,7 +24,6 @@
             <!--Menu Links-->
             <ul class="nav navbar-nav" data-bind="foreach: router.navigationModel">
 
-            <!-- router.isNavigating -->
                 <li data-bind="css: { active: isActive }">
                     <a data-bind="attr: { href: hash }, html: title"></a>
                 </li>
@@ -47,11 +53,11 @@
 
             <!--Sign In/Up-->
             <ul data-bind="visible: !user.authenticated" class="nav navbar-nav navbar-right">
-                <li><a href="#">Sign Up</a></li>
+                <li><a href="#Sign">Sign Up</a></li>
                 <li class="divider"></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-                    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0px;">
+                    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0;">
                         <form method="post" action="login" accept-charset="UTF-8">
                             <input style="margin-bottom: 15px;" type="text" placeholder="Username" id="username" name="username">
                             <input style="margin-bottom: 15px;" type="password" placeholder="Password" id="password" name="password">

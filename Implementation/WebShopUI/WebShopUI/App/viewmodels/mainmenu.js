@@ -5,7 +5,9 @@
                 { route: 'Zebra', title: 'Zebra', moduleId: 'viewmodels/products', nav: true },
                 { route: 'Product/:productName/:ProductId', moduleId: 'viewmodels/product', nav: false },
                 { route: 'Products', moduleId: 'viewmodels/products', nav: false },
-                { route: 'Products/:MainCat/:MainCatId(/:ActCat/:ActCatID)', moduleId: 'viewmodels/products', nav: false }
+                { route: 'Products/:MainCat/:MainCatId(/:ActCat/:ActCatID)', moduleId: 'viewmodels/products', nav: false },
+                { route: 'Sign', moduleId: 'viewmodels/signIn', nav: false }
+
     ];
 
     function getMainMenuRootTypes () {
@@ -25,13 +27,13 @@
             routes.push(r);
         }
 
-    };
+    }
 
     return {
         router: router,
         user: {
             userName: "Pista",
-            authenticated: true
+            authenticated: false
         },
 
         search: function () {
@@ -39,7 +41,6 @@
             //You can add custom options too. Also, it returns a promise for the user's response.
             app.showMessage('Search not yet implemented...');
         },
-
 
         activate: function () {
             sys.log("mainMenu");
@@ -52,9 +53,9 @@
                 .buildNavigationModel()
                 .mapUnknownRoutes('#', 'not-found');
 
-            sys.log(router.navigationModel)
+            sys.log(router.navigationModel);
 
             return router.activate();
         }
-    }
+    };
 });

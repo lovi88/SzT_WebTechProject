@@ -14,6 +14,8 @@
 
         productTypeIsLast: function (ProductType) {
 
-        }
+        },
+
+        activate: function () { }
     };
 });

@@ -1,5 +1,10 @@
 ﻿define(function (require) {
     return {
+        getProductType: function (id) {
+            //mainType, parentType, typeName, typeId, productCount, subTypes
+            return new ProductType(1,1,"teszt"+id,id,50,null);
+        },
+
         getRootProductTypes: function () {
             var names = ["Books", "Antique"];
             var ids = [1, 2];

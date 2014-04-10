@@ -5,7 +5,7 @@
         var that = this;
 
         this.displayName = dict.TranslateText('Welcome to the Lovas WebShop!', 1);
-        this.displayToCart = dict.TranslateText('Add to Cart',1);
+        this.displayToCart = dict.TranslateText('Add to Cart', 1);
 
 
         this.Products = ko.observableArray();
@@ -21,7 +21,7 @@
             }
 
             for (var i = 0; i < times; i++) {
-                                //(productID, productName, creator, price, discountPrice)
+                //(productID, productName, creator, price, discountPrice)
                 actual = new product(i, "pname" + i, "creator" + i, 25 * i, 20 * i);
 
                 sys.log(actual);
@@ -33,8 +33,18 @@
         }
         //:MainCat/:MainCatId(/:ActCat/:ActCatID)
         this.activate = function (MainCat, MainCatId, ActCat, ActCatID) {
-            
+
+
+
+
+
+            this.Products.push("asd");
+            //breadcrumb.productTypeIsLast()
             //breadcrumb.breadcrumbs.push({ name: "TTT", isActive: true, link: "#" })
+        }
+
+        this.getProductCat = function (id) {
+            var productType = productTypeController.getProductType(id);
         }
 
     };

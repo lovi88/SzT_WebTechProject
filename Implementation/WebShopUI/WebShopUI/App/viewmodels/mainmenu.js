@@ -47,14 +47,13 @@
         activate: function () {
             sys.log("mainMenu");
 
-            genMainMenuRootTypes();
             genMainMenuDefaults();
+            genMainMenuRootTypes();
+            
 
             router.map(routes)
                 .buildNavigationModel()
                 .mapUnknownRoutes('#', 'not-found');
-
-            sys.log(router.navigationModel);
 
             return router.activate();
         }

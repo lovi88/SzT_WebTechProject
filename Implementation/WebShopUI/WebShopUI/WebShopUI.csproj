@@ -79,6 +79,7 @@
     <Content Include="App\core\data\data.js" />
     <Content Include="App\core\multilingual\dictionary.js" />
     <Content Include="App\core\multilingual\dictionary.ts" />
+    <Content Include="App\core\utils\data_validation_helpers.js" />
     <Content Include="App\main.js" />
     <Content Include="App\viewmodels\breadcrumb.js" />
     <Content Include="App\viewmodels\flickr.js" />
@@ -156,6 +157,10 @@
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\knockout-3.1.0.js" />
+    <Content Include="Scripts\knockout-3.1.0.min.js">
+      <DependentUpon>knockout-3.1.0.js</DependentUpon>
+    </Content>
     <Content Include="Scripts\sammy-0.7.4.js" />
     <Content Include="Scripts\sammy-0.7.4.min.js" />
     <Content Include="weyland-config.js" />
@@ -174,6 +179,9 @@
   <ItemGroup>
     <Content Include="packages.config" />
     <Content Include="Scripts\jquery-2.1.0.min.map" />
+    <Content Include="Scripts\knockout-3.1.0.min.js.map">
+      <DependentUpon>knockout-3.1.0.min.js</DependentUpon>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

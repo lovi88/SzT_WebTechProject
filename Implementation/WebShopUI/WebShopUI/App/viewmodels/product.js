@@ -4,5 +4,5 @@
             this.product = productController.getProduct(ProductId);
             system.log(product);
         }
-    }
+    };
 });

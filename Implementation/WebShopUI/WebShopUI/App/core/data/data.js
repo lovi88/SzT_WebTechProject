@@ -24,8 +24,7 @@
 
 //        }
 
-//    },
-
+//    
 
 //    productTypeController: {
 //        getRootProductTypes: function () {
@@ -62,7 +61,6 @@
 //        }
 //    },
 
-
 //    UserController: {
 //        getUser: function (UserName, Password) {
 
@@ -81,7 +79,6 @@
 //        }
 
 //    }
-
 
 //}
 

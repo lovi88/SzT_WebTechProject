@@ -1,4 +1,5 @@
-﻿define(['durandal/system', 'durandal/app'], function (sys, app) {
+﻿define(['durandal/system', 'durandal/app', 'busineslogic/productTypeController', 'viewmodels/mainmenu'],
+    function (sys, app, productTypeController, mainmenu) {
 
     var subs1 = [
         {
@@ -55,8 +56,6 @@
 
     subs.push(new ProductType("Books", "Books", "Adatbázis - kezelés", 2, 18, null));
 
-    sys.log(subs);
-
     var parent = new ProductType(
         "Books",
         { typeId: 0 },
@@ -71,7 +70,7 @@
         activeType: active,
         parentType: null,
         setParentType: function (parentType) {
-
+            this.parentType = parentType;
         },
 
         newType: function () {
@@ -106,8 +105,7 @@
         },
 
         activate: function () {
-            //sys.log("sidemenu");
-            //sys.log(active);
+            
         },
 
     };

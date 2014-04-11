@@ -1,5 +1,5 @@
 ﻿define(['durandal/app', 'durandal/system'], function (app, sys) {
-    sys.log("alma");
+    
     var testCrumbs = [
             { name: "Home", isActive: false, link: "#" },
             { name: "TestLink", isActive: false, link: "#" },

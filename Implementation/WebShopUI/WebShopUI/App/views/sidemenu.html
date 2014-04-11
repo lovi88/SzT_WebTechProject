@@ -1,39 +1,38 @@
 ﻿<div class="col-md-3" data-bind="if: activeType">
-        <!--display:none/block bindingolható lesz, ha valamelyik aloldal rejtené-->
-        <ul class="nav nav-pills nav-stacked">
-            <li class="">
-                <a href="#">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    <span data-bind="text: activeType.parentType.typeName"></span>
-                </a>
-            </li>
+    <!--display:none/block bindingolható lesz, ha valamelyik aloldal rejtené-->
+    <ul class="nav nav-pills nav-stacked">
+        <li class="">
+            <a href="#">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span data-bind="text: activeType.parentType.typeName"></span>
+            </a>
+        </li>
 
-            <li class="active">
-                <a href="#" data-bind="text: activeType.typeName"></a>
-            </li>
+        <li class="active">
+            <a href="#" data-bind="text: activeType.typeName"></a>
+        </li>
 
-            <li>
-                <a href="#">
-                    <span class="text-warning" data-bind="click: newType"> Admin: Create New SubType </span>
-                </a>
-            </li>
+        <li>
+            <a href="#">
+                <span class="text-warning" data-bind="click: newType"> Admin: Create New SubType </span>
+            </a>
+        </li>
 
 
+        <!-- ko foreach: activeType.subTypes -->
 
-            <!-- ko foreach: activeType.subTypes -->
+        <li class="">
+            <a data-bind="attr: { href: hash }">
+                <!--<span data-bind="text: hash"></span>-->
+                <span class="glyphicon glyphicon-wrench" data-bind="click: $root.modifyType"></span>
+                <span class="glyphicon glyphicon-remove" data-bind="click: $root.deleteType"></span>
 
-            <li class="">
-                <a data-bind="attr: { href: hash }">
-                    <!--<span data-bind="text: hash"></span>-->
-                    <span class="glyphicon glyphicon-wrench" data-bind="click: $root.modifyType"></span>
-                    <span class="glyphicon glyphicon-remove" data-bind="click: $root.deleteType"></span>
+                <span data-bind="text: typeName"></span>
+            </a>
+        </li>
 
-                    <span data-bind="text: typeName"></span>
-                </a>
-            </li>
+        <!-- /ko -->
 
-            <!-- /ko -->
+    </ul>
 
-        </ul>
-
-    </div>
+</div>

@@ -80,8 +80,10 @@
     <Content Include="App\core\multilingual\dictionary.js" />
     <Content Include="App\core\multilingual\dictionary.ts" />
     <Content Include="App\core\utils\data_validation_helpers.js" />
+    <Content Include="App\core\utils\koMappingsHelper.js" />
     <Content Include="App\main.js" />
     <Content Include="App\viewmodels\breadcrumb.js" />
+    <Content Include="App\viewmodels\cart.js" />
     <Content Include="App\viewmodels\flickr.js" />
     <Content Include="App\viewmodels\mainmenu.js" />
     <Content Include="App\viewmodels\product.js" />
@@ -89,10 +91,13 @@
     <Content Include="App\viewmodels\oneTextDialog.js" />
     <Content Include="App\viewmodels\customModal.js" />
     <Content Include="App\viewmodels\shell.js" />
+    <Content Include="App\viewmodels\shoppingProcessStatus.js" />
     <Content Include="App\viewmodels\sidemenu.js" />
     <Content Include="App\viewmodels\signIn.js" />
+    <Content Include="App\viewmodels\viewnotfound.js" />
     <Content Include="App\viewmodels\welcome.js" />
     <Content Include="App\views\breadcrumb.html" />
+    <Content Include="App\views\cart.html" />
     <Content Include="App\views\detail.html" />
     <Content Include="App\views\flickr.html" />
     <Content Include="App\views\mainmenu.html" />
@@ -101,8 +106,10 @@
     <Content Include="App\views\oneTextDialog.html" />
     <Content Include="App\views\customModal.html" />
     <Content Include="App\views\shell.html" />
+    <Content Include="App\views\shoppingProcessStatus.html" />
     <Content Include="App\views\sidemenu.html" />
     <Content Include="App\views\signIn.html" />
+    <Content Include="App\views\viewnotfound.html" />
     <Content Include="App\views\welcome.html" />
     <Content Include="App__\durandal\plugins\router.js" />
     <Content Include="App__\main.js" />
@@ -121,7 +128,8 @@
     <Content Include="Content\images\icon.png" />
     <Content Include="Content\images\ios-startup-image-landscape.png" />
     <Content Include="Content\images\ios-startup-image-portrait.png" />
-    <Content Include="Content\SiteMain.css" />
+    <Content Include="Content\SiteLocal\ProcessStatus.css" />
+    <Content Include="Content\SiteLocal\SiteMain.css" />
     <Content Include="Content\starterkit.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
@@ -161,6 +169,8 @@
     <Content Include="Scripts\knockout-3.1.0.min.js">
       <DependentUpon>knockout-3.1.0.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\sammy-0.7.4.js" />
     <Content Include="Scripts\sammy-0.7.4.min.js" />
     <Content Include="weyland-config.js" />

@@ -91,7 +91,7 @@ function ProductType(mainType, parentType, typeName, typeId, productCount, subTy
     this.subTypes = subTypes;
 
     this.hash =
-      "#Products/" + this.mainType + "/" + this.typeName + "/" + this.typeId;
+      "#Products/" + this.mainType + "/" + 1 + "/" + this.typeName + "/" + this.typeId;
 
 }
 

@@ -4,7 +4,8 @@
                 { route: ['','#','Home'], title: 'Home', moduleId: 'viewmodels/products', nav: true },
                 { route: 'Product/:productName/:ProductId', moduleId: 'viewmodels/product', nav: false },
                 { route: 'Products', moduleId: 'viewmodels/products', nav: false },
-                { route: 'Sign', moduleId: 'viewmodels/signIn', nav: false }
+                { route: 'Sign', moduleId: 'viewmodels/signIn', nav: false },
+                { route: 'Cart', moduleId: 'viewmodels/cart', nav: false }
 
     ];
 
@@ -50,10 +51,9 @@
             genMainMenuDefaults();
             genMainMenuRootTypes();
             
-
             router.map(routes)
                 .buildNavigationModel()
-                .mapUnknownRoutes('#', 'not-found');
+                .mapUnknownRoutes('viewmodels/viewnotfound', 'not-found');
 
             return router.activate();
         }

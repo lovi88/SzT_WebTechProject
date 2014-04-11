@@ -1,112 +1,94 @@
-﻿define(['durandal/system', 'durandal/app', 'busineslogic/productTypeController', 'viewmodels/mainmenu'],
-    function (sys, app, productTypeController, mainmenu) {
+﻿define(
+    [
+        'durandal/system',
+        'durandal/app',
+        'viewmodels/mainmenu',
+        'busineslogic/productTypeController',
+        'busineslogic/productController'
+    ],
+    function (sys, app, mainmenu, productTypeController, productController) {
+       
+        return {
+            activeType: null,
+            activeTypeName: ko.observable(),
+            activeTypeHash: ko.observable(),
 
-    var subs1 = [
-        {
-            parentType: 1,
-            typeName: dict.TranslateText("Adatbázis - kezelés", 0),
-            typeId: 2,
-            productCount: 70
-        },
-        {
-            parentType: 1,
-            typeName: dict.TranslateText("Általános ismeretek", 0),
-            typeId: 3,
-            productCount: 80
-        },
-        {
-            parentType: 1,
-            typeName: dict.TranslateText("Felhasználói programok", 0),
-            typeId: 4,
-            productCount: 80
-        },
-        {
-            parentType: 1,
-            typeName: dict.TranslateText("Hardver", 0),
-            typeId: 5,
-            productCount: 80
-        },
-        {
-            parentType: 1,
-            typeName: dict.TranslateText("Internet, hálózatok", 0),
-            typeId: 6,
-            productCount: 10
-        },
-        {
-            parentType: 1,
-            typeName: dict.TranslateText("Operációs rendszerek", 0),
-            typeId: 7,
-            productCount: 15
-        },
-        {
-            parentType: 1,
-            typeName: dict.TranslateText("Programozás, fejlesztés", 0),
-            typeId: 8,
-            productCount: 150
-        },
-        {
-            parentType: 1,
-            typeName: dict.TranslateText("További könyveink", 0),
-            typeId: 9,
-            productCount: 500
-        }
-    ];
+            parentType: null,
+            parentTypeName: ko.observable(),
+            parentTypeHash: ko.observable(),
 
-    var subs = [];
+            childTypes: ko.observableArray(),
 
-    subs.push(new ProductType("Books", "Books", "Adatbázis - kezelés", 2, 18, null));
+            setActiveTypeById: function (activeTypeId) {
 
-    var parent = new ProductType(
-        "Books",
-        { typeId: 0 },
-        dict.TranslateText("Könyv", 0),
-        1,
-        null
-    );
+                this.reinitActive(activeTypeId);
+                this.reinitParent();
+                this.reinitChildren(activeTypeId);
+            },
 
-    var active = new ProductType("Books", parent, dict.TranslateText("Számítástechnika, Internet", 0), 2, 1500, subs);
+            reinitActive: function (activeTypeId) {
+                at = this.getTypeById(activeTypeId);
 
-    return {
-        activeType: active,
-        parentType: null,
-        setParentType: function (parentType) {
-            this.parentType = parentType;
-        },
+                this.activeType = at;
+                this.activeTypeName(at.typeName);
+                this.activeTypeHash(at.hash);
+            },
 
-        newType: function () {
-            app.showMessage('mock...');
-        },
+            reinitParent: function () {
+                pi = this.activeType.parentType;
+                pt = this.getTypeById(pi);
 
-        deleteType: function (t) {
-            var message = "Biztos törli: " + t.typeName + "? (mock, nem működik)";
-            message = dict.TranslateText(message, 0);
+                this.parentType = pt;
+                this.parentTypeName(pt.typeName);
+                this.parentTypeHash(pt.hash);
+            },
 
-            var title = dict.TranslateText("Terméktípus törlése", 0);
+            reinitChildren: function (activeTypeId) {
+                this.childTypes(this.getChildTypes(activeTypeId));
+            },
 
-            var options = [
-                dict.TranslateText("Yes", 1),
-                dict.TranslateText("No", 1)
-            ];
+            getTypeById: function (id) {
+                return productTypeController.getProductType(id);
+            },
 
-            app.showMessage(message, title, options).then(function (dialogResult) {
-                sys.log(dialogResult);
-            });
-        },
-        modifyType: function (productType) {
-            //app.showMessage('mock...');
+            getChildTypes: function (id) {
+                return productTypeController.getChildProductTypes(id);
+            },
 
-            //app.productType("asd").then(function (dialogResult) {
-            //    // use dialogResult.checkedValue here
-            //});
-            //("message", "title", ["y", "n"])
+            activate: function () {
 
-            app.showDialog(new modal({ title: "alma" }));
+            },
 
-        },
+            newType: function () {
+                app.showMessage('mock...');
+            },
 
-        activate: function () {
-            
-        },
+            deleteType: function (t) {
+                var message = "Biztos törli: " + t.typeName + "? (mock, nem működik)";
+                message = dict.TranslateText(message, 0);
 
-    };
-});
+                var title = dict.TranslateText("Terméktípus törlése", 0);
+
+                var options = [
+                    dict.TranslateText("Yes", 1),
+                    dict.TranslateText("No", 1)
+                ];
+
+                app.showMessage(message, title, options).then(function (dialogResult) {
+                    sys.log(dialogResult);
+                });
+            },
+            modifyType: function (productType) {
+                //app.showMessage('mock...');
+
+                //app.productType("asd").then(function (dialogResult) {
+                //    // use dialogResult.checkedValue here
+                //});
+                //("message", "title", ["y", "n"])
+
+                app.showDialog(new modal({ title: "alma" }));
+
+            },
+
+        };
+    });

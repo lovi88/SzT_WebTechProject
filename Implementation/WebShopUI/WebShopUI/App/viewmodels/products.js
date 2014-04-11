@@ -1,5 +1,12 @@
-﻿define(['durandal/system', 'durandal/app', 'viewmodels/breadcrumb', 'busineslogic/productController'],
-    function (sys, app, breadcrumb, productController) {
+﻿define(
+    [
+        'durandal/system',
+        'durandal/app',
+        'viewmodels/breadcrumb',
+        'viewmodels/sidemenu',
+        'busineslogic/productController'
+    ],
+    function (sys, app, breadcrumb, sidemenu, productController) {
 
         var allproducts = function () {
             var that = this;
@@ -15,31 +22,31 @@
 
             //:MainCat/:MainCatId(/:ActCat/:ActCatID)
             this.activate = function (MainCat, MainCatId, ActCat, ActCatID) {
+                catId = validId(MainCatId, ActCatID);
 
-                sys.log("MainCat");
-                sys.log(MainCat);
-                sys.log("ActCat");
-                sys.log(ActCat);
-
-                sys.log("MainCatId");
-                sys.log(MainCatId);
-                sys.log("ActCatID");
-                sys.log(ActCatID);
-
-
-                that.initProducts(MainCatId, ActCatID);
-                that.refreshBreadCrumb();
-
+                initProducts(catId);
+                refreshBreadCrumb(catId);
+                refresSideMenu(catId);
+                
             };
 
-            this.initProducts = function (MainCatId, ActCatID) {
-                var prods = null;
+            validId = function (MainCatId, ActCatID) {
                 if (!isNullOrUndefined(ActCatID)) {
-                    prods = that.getProductsOfProductTypeId(ActCatID);
+                    return ActCatID;
                 } else if (!isNullOrUndefined(MainCatId)) {
-                    prods = that.getProductsOfProductTypeId(MainCatId);
+                    return MainCatId;
                 } else {
-                    prods = that.getAllProducts();
+                    return 0;
+                }
+            };
+
+            initProducts = function (id) {
+                var prods = [];
+
+                if (id === 0) {
+                    prods = getAllProducts();
+                } else {
+                    prods = getProductsOfProductTypeId(id);
                 }
 
                 sys.log(prods);
@@ -47,17 +54,21 @@
                 that.Products(prods);
             };
 
-            this.getProductsOfProductTypeId = function (id) {
-                return productController.getProductsByType(id);
-            };
-
-            this.getAllProducts = function () {
+            getAllProducts = function () {
                 return productController.getAllProducts();
             };
 
-            this.refreshBreadCrumb = function () {
+            getProductsOfProductTypeId = function (id) {
+                return productController.getProductsByType(id);
+            };
+
+            refreshBreadCrumb = function (catId) {
                 //breadcrumb.productTypeIsLast()
                 //breadcrumb.breadcrumbs.push({ name: "TTT", isActive: true, link: "#" })
+            };
+
+            refresSideMenu = function (catId) {
+                sidemenu.setActiveTypeById(catId);
             };
 
             this.isTestMode = true;

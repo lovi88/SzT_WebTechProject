@@ -16,7 +16,7 @@
         getProductsByType: function (ProductTypeId) {
             pds = [];
             for (var i = 0; i < 15; i++) {
-                pds.push(new product(i, "t" + i +" Type:" + ProductTypeId, "CreatorPista" + i, 50 * i, 25 * i, "http://www.clipartsfree.net/vector/medium/18177-tv-test-screen-art-design.png"));
+                pds.push(new product(i, "t" + i + " Type:" + ProductTypeId, "CreatorPista" + i, 50 * i, 25 * i, "http://www.clipartsfree.net/vector/medium/18177-tv-test-screen-art-design.png"));
             }
 
             return pds;

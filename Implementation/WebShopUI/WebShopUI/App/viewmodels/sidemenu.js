@@ -56,7 +56,7 @@
             },
 
             activate: function () {
-
+                this.setActiveTypeById(0);
             },
 
             newType: function () {

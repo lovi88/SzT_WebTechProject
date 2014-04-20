@@ -4,9 +4,11 @@
         'durandal/app',
         'viewmodels/breadcrumb',
         'viewmodels/sidemenu',
+        'viewmodels/cart',
+        'plugins/router',
         'busineslogic/productController'
     ],
-    function (sys, app, breadcrumb, sidemenu, productController) {
+    function (sys, app, breadcrumb, sidemenu, cart, router, productController) {
 
         var allproducts = function () {
             var that = this;
@@ -17,7 +19,11 @@
             this.Products = ko.observableArray();
 
             this.addToChart = function (data) {
-                alert(data.productName);
+                cart.addProductToCart(data);
+                toast_success_click("Added To Cart: ", data.productName, function () {
+                    router.navigate("#Cart");
+                });
+
             };
 
             //:MainCat/:MainCatId(/:ActCat/:ActCatID)

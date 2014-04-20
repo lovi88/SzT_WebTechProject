@@ -81,7 +81,10 @@
     <Content Include="App\core\multilingual\dictionary.ts" />
     <Content Include="App\core\utils\data_validation_helpers.js" />
     <Content Include="App\core\utils\koMappingsHelper.js" />
+    <Content Include="App\core\utils\toast_help.js" />
     <Content Include="App\main.js" />
+    <Content Include="App\viewmodels\profile\delivery_address.js" />
+    <Content Include="App\viewmodels\profile\billing_address.js" />
     <Content Include="App\viewmodels\breadcrumb.js" />
     <Content Include="App\viewmodels\cart.js" />
     <Content Include="App\viewmodels\flickr.js" />
@@ -90,12 +93,16 @@
     <Content Include="App\viewmodels\products.js" />
     <Content Include="App\viewmodels\oneTextDialog.js" />
     <Content Include="App\viewmodels\customModal.js" />
+    <Content Include="App\viewmodels\profile.js" />
+    <Content Include="App\viewmodels\profile\profile_data.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\viewmodels\shoppingProcessStatus.js" />
     <Content Include="App\viewmodels\sidemenu.js" />
     <Content Include="App\viewmodels\signIn.js" />
     <Content Include="App\viewmodels\viewnotfound.js" />
     <Content Include="App\viewmodels\welcome.js" />
+    <Content Include="App\views\profile\delivery_address.html" />
+    <Content Include="App\views\profile\billing_address.html" />
     <Content Include="App\views\breadcrumb.html" />
     <Content Include="App\views\cart.html" />
     <Content Include="App\views\detail.html" />
@@ -105,6 +112,8 @@
     <Content Include="App\views\products.html" />
     <Content Include="App\views\oneTextDialog.html" />
     <Content Include="App\views\customModal.html" />
+    <Content Include="App\views\profile.html" />
+    <Content Include="App\views\profile\profile_data.html" />
     <Content Include="App\views\shell.html" />
     <Content Include="App\views\shoppingProcessStatus.html" />
     <Content Include="App\views\sidemenu.html" />
@@ -131,6 +140,8 @@
     <Content Include="Content\SiteLocal\ProcessStatus.css" />
     <Content Include="Content\SiteLocal\SiteMain.css" />
     <Content Include="Content\starterkit.css" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
     <Content Include="Scripts\almond-custom.js" />
@@ -162,6 +173,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\toastr.less" />
     <None Include="Scripts\jquery-2.1.0.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.0.js" />
     <Content Include="Scripts\jquery-2.1.0.min.js" />
@@ -173,6 +185,8 @@
     <Content Include="Scripts\knockout.mapping-latest.js" />
     <Content Include="Scripts\sammy-0.7.4.js" />
     <Content Include="Scripts\sammy-0.7.4.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="weyland-config.js" />
     <Content Include="Scripts\knockout-2.3.0.debug.js" />
     <Content Include="Scripts\knockout-2.3.0.js" />
@@ -192,6 +206,7 @@
     <Content Include="Scripts\knockout-3.1.0.min.js.map">
       <DependentUpon>knockout-3.1.0.min.js</DependentUpon>
     </Content>
+    <Content Include="Scripts\toastr.min.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

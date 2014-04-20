@@ -3,7 +3,7 @@
 
     return {
         activate: function () {
-            
+            toastrOptionInit();
         },
         activeMainType: null,
         activeSideType: null,

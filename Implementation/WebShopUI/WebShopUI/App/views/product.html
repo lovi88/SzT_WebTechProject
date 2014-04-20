@@ -1,24 +1,24 @@
 ﻿<!-- Start: Product description -->
-<div class="article" data-bind="with: product">
+<div class="article">
     <div class="row bottom-space">
         <div class="span12">
             <div class="page-header">
-                <h1 data-bind="text: productName"></h1>
+                <h1 data-bind="text: product.productName"></h1>
             </div>
         </div>
         <div class="span12 center-align">
-            <img class="thumbnail img-responsive" data-bind="attr: {alt: caption, src: largeImg}" />
+            <img class="thumbnail img-responsive" data-bind="attr: {alt: product.caption, src: product.largeImg}" />
         </div>
     </div>
     <div class="row">
         <div class="span10 offset1">
-            <blockquote>creatted by: <span data-bind="text: creator"></span></blockquote>
+            <blockquote>creatted by: <span data-bind="text: product.creator"></span></blockquote>
             
-            <blockquote data-bind="text: description"></blockquote>
+            <blockquote data-bind="text: product.description"></blockquote>
 
             <div class="span8 offset1">
-                <h3>Fetures of <span data-bind="text: productName"></span></h3>
-                <ul class="features" data-bind="foreach: features">
+                <h3>Fetures of <span data-bind="text: product.productName"></span></h3>
+                <ul class="features" data-bind="foreach: product.features">
                     <li>
                         <span class="glyphicon glyphicon-ok"></span> <strong data-bind="text: $data"></strong>
                     </li>
@@ -33,7 +33,7 @@
                 <p>
                     Ready to start the innovation?
                 </p>
-                <a class="btn btn-primary" href="#">Add To Chart</a>
+                <button data-bind="click: addToChart" type="button" class="btn btn-primary">Add To Chart</button>
             </div>
 
         </div>

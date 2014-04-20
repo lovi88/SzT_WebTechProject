@@ -41,8 +41,8 @@
                         UserName <span class="glyphicon glyphicon-cog"></span><b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Edit Billing Data</a></li>
-                        <li><a href="#">Edit Profile Data</a></li>
+                        <li><a href="#Profile">Edit Billing Data</a></li>
+                        <li><a href="#Profile">Edit Profile Data</a></li>
                         <li class="divider"></li>
                         <li><a href="#">Sign Out</a></li>
                     </ul>
@@ -70,8 +70,9 @@
                 </li>
             </ul>
 
-
-
+            <ul data-bind="if: isDebug" class="nav navbar-nav navbar-brand">
+                <li data-bind="click: debug">FireDebugMethod!</li>
+            </ul>
 
             <!--Cart-->
             <ul class="nav navbar-nav navbar-right">
@@ -81,12 +82,29 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#Cart">View Cart</a></li>
-                        <li><a href="#">Add Product to Cart</a></li>
-                        <li><a href="#">Checkout Cart and Payment</a></li>
+
+                        <li data-bind="click: cart_checkout, if: cart_prods().length>0">
+                            <a href="#">Checkout Cart</a>
+                        </li>
+
                         <li class="divider"></li>
-                        <li><a href="#">Kosármban lévő termék 1</a></li>
-                        <li><a href="#">Kosármban lévő termék 2</a></li>
-                        <li><a href="#">Kosármban lévő termék i</a></li>
+                        <li><a href="#">Products in your cart:</a></li>
+
+
+                        <li data-bind="if: cart_prods().length < 1">
+                            <a href="#">Your cart is empty</a>
+                        </li>
+
+
+                        <!-- ko foreach: cart_prods -->
+                        <li>
+                        
+                            <a data-bind="attr: { href : URLPath }">
+                                <span data-bind="text: productName">Kosármban lévő termék n.</span>
+                            </a>
+                        </li>
+                        <!-- /ko -->
+
                     </ul>
                 </li>
             </ul>

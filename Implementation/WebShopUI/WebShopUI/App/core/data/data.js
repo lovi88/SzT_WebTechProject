@@ -116,3 +116,24 @@ function product(productID, productName, creator, price, discountPrice) {
     this.displayDiscountPrice = dict.TranslateText("Discounted", 1);
     this.displayCreator = "";
 }
+
+function cartProduct(product) {
+    this.product = product;
+
+    this.productID = product.productID;
+
+    this.productName = product.productName;
+    this.description = product.description;
+    this.caption = product.caption;
+    this.features = product.features;
+    this.creator = product.creator;
+    this.price = product.price;
+    this.discountPrice = product.discountPrice;
+
+    this.productType = product.productType;
+
+    this.URLPath = product.URLPath;
+    this.smallImg = product.smallImg;
+    this.largeImg = product.largeImg;
+
+}

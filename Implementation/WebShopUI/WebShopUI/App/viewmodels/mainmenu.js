@@ -1,10 +1,18 @@
-﻿define(['durandal/system', 'durandal/app', 'plugins/router', 'busineslogic/productTypeController'], function (sys, app, router, productTypeController) {
+﻿define(
+    [
+        'durandal/system',
+        'durandal/app',
+        'plugins/router',
+        'viewmodels/cart',
+        'busineslogic/productTypeController'
+    ], function (sys, app, router, cart, productTypeController) {
 
     var routes = [
                 { route: ['','#','Home'], title: 'Home', moduleId: 'viewmodels/products', nav: true },
                 { route: 'Product/:productName/:ProductId', moduleId: 'viewmodels/product', nav: false },
                 { route: 'Products', moduleId: 'viewmodels/products', nav: false },
                 { route: 'Sign', moduleId: 'viewmodels/signIn', nav: false },
+                { route: 'Profile', moduleId: 'viewmodels/profile', nav: false },
                 { route: 'Cart', moduleId: 'viewmodels/cart', nav: false }
 
     ];
@@ -34,9 +42,16 @@
 
     return {
         router: router,
+
+        cart_prods: cart.products,
+        cart_checkout: function () {
+    
+        },
+
         user: {
             userName: "Pista",
-            authenticated: false
+            authenticated: true,
+
         },
 
         search: function () {
@@ -46,8 +61,7 @@
         },
 
         activate: function () {
-            sys.log("mainMenu");
-
+           
             genMainMenuDefaults();
             genMainMenuRootTypes();
             
@@ -56,7 +70,13 @@
                 .mapUnknownRoutes('viewmodels/viewnotfound', 'not-found');
 
             return router.activate();
-        }
+        },
 
+        isDebug: false,
+        debug: function () {
+            sys.log("mainMenu");
+            
+            sys.log(ko.toJSON(this.cart_prods));
+        }
     };
 });

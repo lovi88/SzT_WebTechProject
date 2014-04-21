@@ -8,7 +8,7 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="">Full name</label>
             <div class="col-md-4">
-                <input id="" name="" placeholder="John Conor" class="form-control input-md" required="" type="text">
+                <input data-bind="value: full_name" placeholder="John Conor" class="form-control input-md" required="" type="text">
                 <span class="help-block">Teljes név, megadása kötelező</span>
             </div>
         </div>
@@ -17,43 +17,35 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="">E-mail</label>
             <div class="col-md-4">
-                <input id="" name="" placeholder="lovi@example.com" class="form-control input-md" required="" type="text">
+                <input data-bind="value: e_mail" placeholder="lovi@example.com" class="form-control input-md" required="" type="text">
                 <span class="help-block">E-mail cím kötelezően megadandó</span>
             </div>
         </div>
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="passwordinput">Actual Password</label>
+            <label class="col-md-4 control-label" for="passwordinput1">Actual Password</label>
             <div class="col-md-4">
-                <input id="passwordinput" name="passwordinput" placeholder="*************" class="form-control input-md" type="password">
+                <input data-bind="value: actual_password" id="passwordinput1" name="passwordinput1" placeholder="*************" class="form-control input-md" type="password">
                 <span class="help-block">Adja meg a jelenleg érvényes jelszavát</span>
             </div>
         </div>
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="passwordinput">New Password</label>
+            <label class="col-md-4 control-label" for="passwordinput2">New Password</label>
             <div class="col-md-4">
-                <input id="passwordinput" name="passwordinput" placeholder="*************" class="form-control input-md" type="password">
+                <input data-bind="value: new_password" id="passwordinput2" name="passwordinput2" placeholder="*************" class="form-control input-md" type="password">
                 <span class="help-block">Adja meg új jelszavát</span>
             </div>
         </div>
 
         <!-- Password input-->
         <div class="form-group">
-            <label class="col-md-4 control-label" for="">New Password Again</label>
+            <label class="col-md-4 control-label" for="passwordinput3">New Password Again</label>
             <div class="col-md-4">
-                <input id="" name="" placeholder="*************" class="form-control input-md" type="password">
+                <input data-bind="value: new_password_again" id="passwordinput3" name="passwordinput3" placeholder="*************" class="form-control input-md" type="password">
                 <span class="help-block">Ismételje meg új jelszavát</span>
-            </div>
-        </div>
-
-        <!-- Button -->
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="">Change Password</label>
-            <div class="col-md-4">
-                <button id="" name="" class="btn btn-info">Button</button>
             </div>
         </div>
 
@@ -61,8 +53,17 @@
         <div class="form-group">
             <label class="col-md-4 control-label" for="">Birth date</label>
             <div class="col-md-4">
-                <input id="" name="" placeholder="2000-12-30" class="form-control input-md" type="text">
+                <input data-bind="value: birth_date" placeholder="2000-12-30" class="form-control input-md" type="text">
                 <span class="help-block">Itt megadhatja születésnapját</span>
+            </div>
+        </div>
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="button1id">Save Changes</label>
+            <div class="col-md-8">
+                <button data-bind="click: saveChanges" class="btn btn-info">Save Changes</button>
+                <button data-bind="click: cancelChanges" class="btn btn-danger">Cancel Changes</button>
             </div>
         </div>
 

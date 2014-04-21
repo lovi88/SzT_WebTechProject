@@ -1,10 +1,40 @@
-﻿<div>
+﻿
+<div class="modal-content">
+    <br>
+    <div class="bs-example bs-example-tabs">
+        <ul id="myTab" class="nav nav-tabs">
+            <li class=""><a href="#profile_data" data-toggle="tab">Profile Data</a></li>
+            <li class="active"><a href="#billing_address" data-toggle="tab">Billing Address</a></li>
+            <li class=""><a href="#delivery_address" data-toggle="tab">Delivery Address</a></li>
+        </ul>
+    </div>
 
+    <div class="modal-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in" id="delivery_address">
+                <div data-bind="compose: 'viewmodels/profile/prefered_delivery'"></div>
 
-    <div data-bind="compose: 'viewmodels/profile/profile_data'"></div>
+                <div data-bind="compose: 'viewmodels/profile/delivery_address'"></div>
+            </div>
 
-    <div data-bind="compose: 'viewmodels/profile/billing_address'"></div>
+            <div class="tab-pane fade" id="profile_data">
+               <div data-bind="compose: 'viewmodels/profile/profile_data'"></div>
+            </div>
 
-    <div data-bind="compose: 'viewmodels/profile/delivery_address'"></div>
+            <div class="tab-pane fade active in" id="billing_address">
+               <div data-bind="compose: 'viewmodels/profile/billing_address'"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer"></div>
 
 </div>
+
+
+
+    
+
+    
+
+    
+

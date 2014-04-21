@@ -1,0 +1,46 @@
+﻿<form class="form-horizontal">
+    <fieldset>
+
+        <!-- Form Name -->
+        <legend>Átvétel adatok</legend>
+
+        <!-- Multiple Radios -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="szem_atv">Szállítás módja</label>
+            <div class="col-md-4">
+                <div class="radio">
+                    <label for="-0">
+                        <input data-bind="checked: delivery_method" value="personal" id="szem_atv" checked="checked" type="radio">
+                        Személyes átvétel adott árúházunkban
+                    </label>
+                </div>
+                <div class="radio">
+                    <label for="hazh_sz">
+                        <input data-bind="checked: delivery_method" value="shipping" id="hazh_sz" type="radio">
+                        Házhoz szállítás
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Select Basic -->
+        <div class="form-group" >
+            <label class="col-md-4 control-label" for="">Szállítás helye</label>
+            <div class="col-md-5">
+                <select data-bind="options: avaibleStores, value: selectedStore, enable: delivery_method() == 'personal'" class="form-control"></select>
+            </div>
+        </div>
+
+
+        <!-- Button (Double) -->
+        <div class="form-group">
+            <label class="col-md-4 control-label" for="button1id">Save Changes</label>
+            <div class="col-md-8">
+                <button data-bind="click: saveChanges" class="btn btn-info">Save Changes</button>
+                <button data-bind="click: cancelChanges" class="btn btn-danger">Cancel Changes</button>
+            </div>
+        </div>
+
+    </fieldset>
+</form>
+

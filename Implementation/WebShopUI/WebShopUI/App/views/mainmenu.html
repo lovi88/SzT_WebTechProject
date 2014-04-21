@@ -83,8 +83,10 @@
                     <ul class="dropdown-menu">
                         <li><a href="#Cart">View Cart</a></li>
 
-                        <li data-bind="click: cart_checkout, if: cart_prods().length>0">
-                            <a href="#">Checkout Cart</a>
+                        <li data-bind="if: cart_prods().length > 0">
+                            <a data-bind="click: cart_checkout" href="#">
+                                Checkout Cart
+                            </a>
                         </li>
 
                         <li class="divider"></li>
@@ -98,7 +100,7 @@
 
                         <!-- ko foreach: cart_prods -->
                         <li>
-                        
+
                             <a data-bind="attr: { href : URLPath }">
                                 <span data-bind="text: productName">Kosármban lévő termék n.</span>
                             </a>

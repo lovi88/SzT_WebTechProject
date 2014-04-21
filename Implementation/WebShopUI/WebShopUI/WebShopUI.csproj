@@ -77,6 +77,7 @@
     <Content Include="App\busineslogic\productTypeController.js" />
     <Content Include="App\busineslogic\UserController.js" />
     <Content Include="App\core\data\data.js" />
+    <Content Include="App\core\data\user.js" />
     <Content Include="App\core\multilingual\dictionary.js" />
     <Content Include="App\core\multilingual\dictionary.ts" />
     <Content Include="App\core\utils\data_validation_helpers.js" />
@@ -94,6 +95,7 @@
     <Content Include="App\viewmodels\oneTextDialog.js" />
     <Content Include="App\viewmodels\customModal.js" />
     <Content Include="App\viewmodels\profile.js" />
+    <Content Include="App\viewmodels\profile\prefered_delivery.js" />
     <Content Include="App\viewmodels\profile\profile_data.js" />
     <Content Include="App\viewmodels\shell.js" />
     <Content Include="App\viewmodels\shoppingProcessStatus.js" />
@@ -113,6 +115,7 @@
     <Content Include="App\views\oneTextDialog.html" />
     <Content Include="App\views\customModal.html" />
     <Content Include="App\views\profile.html" />
+    <Content Include="App\views\profile\prefered_delivery.html" />
     <Content Include="App\views\profile\profile_data.html" />
     <Content Include="App\views\shell.html" />
     <Content Include="App\views\shoppingProcessStatus.html" />

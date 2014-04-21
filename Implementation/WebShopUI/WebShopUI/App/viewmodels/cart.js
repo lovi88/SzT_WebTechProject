@@ -1,4 +1,9 @@
-﻿define(['durandal/system', 'durandal/app'], function (sys, app) {
+﻿define(
+    [
+        'durandal/system',
+        'durandal/app',
+        'plugins/router'
+    ], function (sys, app, router) {
 
     function ch() {
 

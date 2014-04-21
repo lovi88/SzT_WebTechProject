@@ -45,7 +45,7 @@
 
         cart_prods: cart.products,
         cart_checkout: function () {
-    
+            cart.checkoutCart();
         },
 
         user: {

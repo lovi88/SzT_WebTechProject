@@ -1,5 +1,5 @@
-﻿define(['durandal/app', 'durandal/system', "viewmodels/customModal"],
-    function (app, sys, modal) {
+﻿define(['durandal/app', 'durandal/system'],
+    function (app, sys) {
 
     return {
         activate: function () {

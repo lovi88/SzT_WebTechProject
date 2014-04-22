@@ -1,9 +1,10 @@
-﻿define(
-    [
+﻿define([
         'durandal/system',
         'durandal/app',
+        'viewmodels/sign/sign',
+        'core/data/user',
         'plugins/router'
-    ], function (sys, app, router) {
+], function (sys, app, sign, user, router) {
 
     function ch() {
 
@@ -35,11 +36,29 @@
         };
 
         this.checkoutCart = function () {
-            alert("checkout baby!");
+            checkUserAndOrder();
         };
+
+        checkUserAndOrder = function () {
+            if (!user.isAuthenticated()) {
+                sign.openAsModal(aftermodal);
+            } else {
+                ToOrderingPage();
+            }
+        };
+
+        aftermodal = function (dialResult) {
+            if (dialResult == "OK") {
+                checkUserAndOrder();
+            }
+        };
+
+        ToOrderingPage = function () {
+            router.navigate("#Ordering");
+        };
+
     }
 
-    
     return new ch();
 
 });

@@ -19,7 +19,7 @@
             initFromUser: function () {
                 pd = user.profile_data;
 
-                this.full_name(pd.name);
+                this.full_name(pd.name());
                 this.e_mail(pd.email);
                 this.birth_date(pd.birthDate);
 
@@ -72,7 +72,7 @@
             saveNameEmailBirth: function () {
                 pd = user.profile_data;
 
-                pd.name = this.full_name();
+                pd.name(this.full_name());
                 pd.email = this.e_mail();
                 pd.birthDate = this.birth_date();
             },

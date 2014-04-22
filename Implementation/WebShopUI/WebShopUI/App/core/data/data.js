@@ -137,3 +137,33 @@ function cartProduct(product) {
     this.largeImg = product.largeImg;
 
 }
+
+function userEntity() {
+    this.uid = 0;
+    this.isAdmin = false;
+
+    this.profile_data = {
+        name: "Lovas István",
+        email: "l.pista@example.com",
+        birthDate: "1988.03.20"
+    };
+
+    this.delivery_address = {
+        country: "Hungary",
+        city: "Budapest",
+        zip_code: 1111,
+        road_num: "Delivery str. 80"
+    };
+
+    this.billing_address = {
+        country: "Hungary",
+        city: "Budapest",
+        zip_code: 1111,
+        road_num: "Billing str. 80"
+    };
+
+    this.preferred_delivery = {
+        delivery_method: "personal",
+        selectedStore: "bp. 2. sz üzlet",
+    };
+}

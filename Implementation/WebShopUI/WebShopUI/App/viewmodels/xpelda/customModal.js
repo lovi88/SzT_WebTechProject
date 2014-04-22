@@ -16,10 +16,9 @@
     //    return dialog.show(new CustomModal());
     //};
 
-    var CustomModal = function(asd) {
+    var CustomModal = function (asd) {
         this.asd = asd;
-    }
-
+    };
 
     return CustomModal;
 });

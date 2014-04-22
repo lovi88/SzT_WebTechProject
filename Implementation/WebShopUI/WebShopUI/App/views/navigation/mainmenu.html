@@ -31,43 +31,31 @@
 
 
             <!--User Profile-->
-            <p data-bind="visible: user.authenticated" class="navbar-text navbar-right">
+            <p data-bind="visible: authenticated()" class="navbar-text navbar-right">
                 Signed in as
-                <span data-bind="text: user.userName"></span>
+                <span data-bind="text: userName"></span>
             </p>
-            <ul data-bind="visible: user.authenticated" class="nav navbar-nav navbar-right">
+            <ul data-bind="visible: authenticated" class="nav navbar-nav navbar-right">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        UserName <span class="glyphicon glyphicon-cog"></span><b class="caret"></b>
+                        <span data-bind="text: userName"></span> <span class="glyphicon glyphicon-cog"></span><b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
                         <li><a href="#Profile">Edit Billing Data</a></li>
                         <li><a href="#Profile">Edit Profile Data</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Sign Out</a></li>
+                        <li><a href="#" data-bind="click: signOut">Sign Out</a></li>
                     </ul>
                 </li>
             </ul>
 
-
-
             <!--Sign In/Up-->
-            <ul data-bind="visible: !user.authenticated" class="nav navbar-nav navbar-right">
+            <ul data-bind="visible: !authenticated()" class="nav navbar-nav navbar-right">
                 <li><a href="#Sign">Sign Up</a></li>
                 <li class="divider"></li>
-                <li class="dropdown">
-                    <a class="dropdown-toggle" href="#" data-toggle="dropdown">Sign In <strong class="caret"></strong></a>
-                    <div class="dropdown-menu" style="padding: 15px; padding-bottom: 0;">
-                        <form method="post" action="login" accept-charset="UTF-8">
-                            <input class="input-sm" style="margin-bottom: 10px;" type="text" placeholder="Username" id="username" name="username" />
-                            <input class="input-sm" style="margin-bottom: 10px;" type="password" placeholder="Password" id="password" name="password" />
-                            <input style="float: left; margin-right: 10px;" type="checkbox" name="remember-me" id="remember-me" value="1" />
-                            <label for="user_remember_me"> Remember me</label>
-                            <input class="btn btn-success btn-block" type="submit" id="sign-in" value="Sign In" />
-                            <label style="text-align:center; margin-top:5px"></label>
-                        </form>
-                    </div>
-                </li>
+
+                <!-- ko compose: { model: 'viewmodels/sign/signIn', view:'views/sign/MenuSigIn.html' } --><!-- /ko -->
+
             </ul>
 
             <ul data-bind="if: isDebug" class="nav navbar-nav navbar-brand">

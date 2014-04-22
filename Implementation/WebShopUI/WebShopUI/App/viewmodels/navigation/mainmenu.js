@@ -4,16 +4,18 @@
         'durandal/app',
         'plugins/router',
         'viewmodels/cart',
+        'core/data/user',
         'busineslogic/productTypeController'
-    ], function (sys, app, router, cart, productTypeController) {
+    ], function (sys, app, router, cart, user, productTypeController) {
 
     var routes = [
                 { route: ['','#','Home'], title: 'Home', moduleId: 'viewmodels/products', nav: true },
                 { route: 'Product/:productName/:ProductId', moduleId: 'viewmodels/product', nav: false },
                 { route: 'Products', moduleId: 'viewmodels/products', nav: false },
-                { route: 'Sign', moduleId: 'viewmodels/signIn', nav: false },
-                { route: 'Profile', moduleId: 'viewmodels/profile', nav: false },
-                { route: 'Cart', moduleId: 'viewmodels/cart', nav: false }
+                { route: 'Sign', moduleId: 'viewmodels/sign/sign', nav: false },
+                { route: 'Profile', moduleId: 'viewmodels/profile/profile', nav: false },
+                { route: 'Cart', moduleId: 'viewmodels/cart', nav: false },
+                { route: 'Ordering', moduleId: 'viewmodels/ordering/ordering', nav: false }
 
     ];
 
@@ -48,12 +50,12 @@
             cart.checkoutCart();
         },
 
-        user: {
-            userName: "Pista",
-            authenticated: true,
-
+        userName: user.profile_data.name,
+        authenticated: user.isAuthenticated,
+        signOut: function () {
+            user.signOut();
         },
-
+        
         search: function () {
             //It's really easy to show a message box.
             //You can add custom options too. Also, it returns a promise for the user's response.
@@ -76,7 +78,7 @@
         debug: function () {
             sys.log("mainMenu");
             
-            sys.log(ko.toJSON(this.cart_prods));
+            sys.log(ko.toJSON(user.isAuthenticated));
         }
     };
 });

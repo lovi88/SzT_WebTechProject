@@ -1,4 +1,4 @@
-﻿<div class="col-md-3" >
+﻿<div class="col-md-3">
     <!--display:none/block bindingolható lesz, ha valamelyik aloldal rejtené-->
     <ul class="nav nav-pills nav-stacked">
         <li class="">
@@ -13,7 +13,13 @@
         </li>
 
         <li>
-            <a href="#">
+            <a>
+                <span class="text-warning" data-bind="click: newProd"> Admin: Create New Product In Type</span>
+            </a>
+        </li>
+
+        <li>
+            <a>
                 <span class="text-warning" data-bind="click: newType"> Admin: Create New SubType </span>
             </a>
         </li>
@@ -23,9 +29,11 @@
 
         <li class="">
             <a data-bind="attr: { href: hash }">
-                <!--<span data-bind="text: hash"></span>-->
-                <span class="glyphicon glyphicon-wrench" data-bind="click: $root.modifyType"></span>
-                <span class="glyphicon glyphicon-remove" data-bind="click: $root.deleteType"></span>
+                <!-- visible: isAdmin -->
+                <span class="glyphicon glyphicon-wrench" data-bind="click: $root.modifyType, visible: $root.isAdmin"></span>
+                <span class="glyphicon glyphicon-remove" data-bind="click: $root.deleteType, visible: $root.isAdmin"></span>
+
+                <span class="glyphicon glyphicon-chevron-right"></span>
 
                 <span data-bind="text: typeName"></span>
             </a>

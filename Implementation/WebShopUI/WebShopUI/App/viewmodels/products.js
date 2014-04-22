@@ -2,8 +2,8 @@
     [
         'durandal/system',
         'durandal/app',
-        'viewmodels/breadcrumb',
-        'viewmodels/sidemenu',
+        'viewmodels/navigation/breadcrumb',
+        'viewmodels/navigation/sidemenu',
         'viewmodels/cart',
         'plugins/router',
         'busineslogic/productController'
@@ -55,7 +55,7 @@
                     prods = getProductsOfProductTypeId(id);
                 }
 
-                sys.log(prods);
+                //sys.log(prods);
 
                 that.Products(prods);
             };

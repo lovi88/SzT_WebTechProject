@@ -2,11 +2,12 @@
     [
         'durandal/system',
         'durandal/app',
-        'viewmodels/mainmenu',
+        'viewmodels/navigation/mainmenu',
+        'core/data/user',
         'busineslogic/productTypeController',
         'busineslogic/productController'
     ],
-    function (sys, app, mainmenu, productTypeController, productController) {
+    function (sys, app, mainmenu, user, productTypeController, productController) {
        
         return {
             activeType: null,
@@ -18,6 +19,8 @@
             parentTypeHash: ko.observable(),
 
             childTypes: ko.observableArray(),
+
+            isAdmin: user.isAdmin,
 
             setActiveTypeById: function (activeTypeId) {
 
@@ -63,6 +66,10 @@
                 app.showMessage('mock...');
             },
 
+            newProd: function () {
+                app.showMessage('mock...');
+            },
+
             deleteType: function (t) {
                 var message = "Biztos törli: " + t.typeName + "? (mock, nem működik)";
                 message = dict.TranslateText(message, 0);
@@ -75,7 +82,7 @@
                 ];
 
                 app.showMessage(message, title, options).then(function (dialogResult) {
-                    sys.log(dialogResult);
+                    //sys.log(dialogResult);
                 });
             },
             modifyType: function (productType) {
@@ -86,9 +93,9 @@
                 //});
                 //("message", "title", ["y", "n"])
 
-                app.showDialog(new modal({ title: "alma" }));
+                //app.showDialog(new modal({ title: "alma" }));
 
-            },
+            }
 
         };
     });

@@ -1,0 +1,29 @@
+﻿<div class="modal-content">
+    <br>
+    <div class="bs-example bs-example-tabs">
+        <ul id="myTab" class="nav nav-tabs">
+            <li class=""><a href="#signin" data-toggle="tab">Sign In</a></li>
+            <li class="active"><a href="#signup" data-toggle="tab">Register</a></li>
+            <li class=""><a href="#why" data-toggle="tab">Why?</a></li>
+        </ul>
+    </div>
+    <div class="modal-body">
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade in" id="why">
+                <p>We need this information so that you can receive access to the site and its content. Rest assured your information will not be sold, traded, or given to anyone.</p>
+                <p></p><br> Please contact <a mailto:href="JoeSixPack@Sixpacksrus.com"></a>JoeSixPack@Sixpacksrus.com for any other inquiries.<p></p>
+            </div>
+            <div class="tab-pane fade" id="signin">
+                <div data-bind="compose: 'viewmodels/sign/signIn'"></div>
+            </div>
+            <div class="tab-pane fade active in" id="signup">
+                <div data-bind="compose: 'viewmodels/sign/signUp'"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer" data-bind="if: isModal">
+        <center>
+            <button type="button" data-bind="click: closeWithAborted" class="btn btn-default" data-dismiss="modal">Close</button>
+        </center>
+    </div>
+</div>

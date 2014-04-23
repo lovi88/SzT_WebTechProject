@@ -85,6 +85,11 @@
     <Content Include="App\core\utils\koMappingsHelper.js" />
     <Content Include="App\core\utils\toast_help.js" />
     <Content Include="App\main.js" />
+    <Content Include="App\viewmodels\admin\createNewType.js" />
+    <Content Include="App\viewmodels\admin\createNewProduct.js" />
+    <Content Include="App\viewmodels\admin\importProductsFromCSV.js" />
+    <Content Include="App\views\admin\createNewProduct.html" />
+    <Content Include="App\views\admin\createNewType.html" />
     <Content Include="App\viewmodels\ordering\ordering.js" />
     <Content Include="App\viewmodels\ordering\orderingSummary.js" />
     <Content Include="App\viewmodels\profile\delivery_address.js" />
@@ -108,6 +113,7 @@
     <Content Include="App\viewmodels\sign\signUp.js" />
     <Content Include="App\viewmodels\viewnotfound.js" />
     <Content Include="App\viewmodels\xpelda\welcome.js" />
+    <Content Include="App\views\admin\importProductsFromCSV.html" />
     <Content Include="App\views\ordering\ordering.html" />
     <Content Include="App\views\ordering\orderingSummary.html" />
     <Content Include="App\views\profile\delivery_address.html" />
@@ -158,6 +164,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="index.html" />
     <Content Include="Scripts\almond-custom.js" />
+    <None Include="Scripts\amplify_1_1_2\amplify-vsdoc.js" />
+    <Content Include="Scripts\amplify_1_1_2\amplify.js" />
+    <Content Include="Scripts\amplify_1_1_2\amplify.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\durandal\activator.js" />

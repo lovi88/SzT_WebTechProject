@@ -7,6 +7,7 @@
     return {
         //personal | shipping
         delivery_method: ko.observable("shipping"),
+        delivery_price: ko.observable(0),
 
         avaibleStores: ko.observableArray(["bp. 1. sz üzlet", "bp. 2. sz üzlet"]),
         selectedStore: ko.observable(),
@@ -19,6 +20,8 @@
             pd = user.preferred_delivery;
 
             this.delivery_method(pd.delivery_method);
+            this.delivery_price(pd.delivery_price);
+
             this.selectedStore(pd.selectedStore);
 
         },

@@ -22,21 +22,25 @@
 
         });
 
-        activate = function () {
+        this.activate = function () {
+            this.retrieveFromStoreIfCan();
+        };
 
+        this.getProductsFromStore = function () {
+            var key = this.getStoreKey();
+            that.products(amplify.store(key));
         };
 
         this.addProductToCart = function (product) {
-
             that.products.push(new cartProduct(product));
+
+            that.setProductsInStore();
         };
 
         this.deleteProductFromChart = function (product) {
             that.products.remove(product);
-        };
 
-        this.checkoutCart = function () {
-            checkUserAndOrder();
+            that.setProductsInStore();
         };
 
         checkUserAndOrder = function () {
@@ -53,10 +57,39 @@
             }
         };
 
+        this.checkoutCart = function () {
+            checkUserAndOrder();
+        };
+
+        this.clearCart = function () {
+
+        };
+
         ToOrderingPage = function () {
             router.navigate("#Ordering");
         };
 
+        this.retrieveFromStoreIfCan = function () {
+            
+            var cartFromStore = amplify.store(this.getStoreKey());
+
+            that.products(cartFromStore);
+        };
+
+        this.setProductsInStore = function () {
+           
+            var key = this.getStoreKey();
+            amplify.store(key, that.products(), { expired: 7200000});
+        };
+
+        this.clearProductsFromStore = function () {
+            var key = this.getStoreKey();
+            amplify.store(key, null);
+        };
+
+        this.getStoreKey = function () {
+            return "cart_" + user.UnicIdentifier;
+        };
     }
 
     return new ch();

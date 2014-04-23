@@ -36,6 +36,8 @@
             if (this.isModal) {
                 this.isModal = false;
                 dialog.close(this, this.state);
+            } else {
+                router.navigate("#");
             }
         },
 

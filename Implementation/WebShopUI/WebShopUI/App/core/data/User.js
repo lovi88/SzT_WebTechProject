@@ -6,8 +6,9 @@
     return {
 
         UId: 1,
+        UnicIdentifier: 32,
 
-        isAuthenticated: ko.observable(true),
+        isAuthenticated: ko.observable(false),
         isAdmin: ko.observable(false),
 
         profile_data: {
@@ -31,60 +32,30 @@
         },
 
         preferred_delivery: {
-            delivery_method: "",
+            delivery_method: "shipping",
             selectedStore: "",
-        },
-
-        check: {
-
-            isempty: function (param) {
-                return isNullOrUndefinedOrEmpty(param);
-            },
-
-            ifEmptyThrow: function (param, message) {
-                if (this.isempty(param)) {
-                    throw message;
-                }
-            },
-
-            passPassAgainisSame: function (pass, passAgain) {
-                return pass == passAgain;
-            },
-
-            ifPassAndPassAgainisNotSameThrow: function (pass, passAgain, message) {
-                if (this.passPassAgainisSame(pass, passAgain)) {
-                    throw message;
-                }
-            },
-
-            isEmail: function (email) {
-                var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
-                return regex.test(email);
-            },
-
-            ifIsNotEmailThrow: function (email, message) {
-                if (!this.isEmail(email)) {
-                    throw message;
-                }
-            }
+            delivery_price: "80"
         },
 
         savePass: function (old_ps, newpass, newpsagain) {
-            this.check.ifEmptyThrow(old_ps, "Jelszó módosításnál meg kell adnia eredeti jelszavát");
-            this.check.ifEmptyThrow(newpass, "Jelszó módosításnál az új jelszava nem lehet üres");
-            this.check.ifEmptyThrow(newpsagain, "A jelszavát meg kell ismételnie");
+            check.ifEmptyThrow(old_ps, "Jelszó módosításnál meg kell adnia eredeti jelszavát");
+            check.ifEmptyThrow(newpass, "Jelszó módosításnál az új jelszava nem lehet üres");
+            check.ifEmptyThrow(newpsagain, "A jelszavát meg kell ismételnie");
 
-            this.check.ifPassAndPassAgainisNotSameThrow(newpass, newpsagain, "A két jelszó nem egyezik meg");
+            check.ifPassAndPassAgainisNotSameThrow(newpass, newpsagain, "A két jelszó nem egyezik meg");
 
             UserController.modifyUserPass(this.UId, newpass);
         },
 
         signIn: function (user_name, pass, remember) {
 
-            this.check.ifEmptyThrow(user_name, "username can't be empty!");
-            this.check.ifEmptyThrow(pass, "password can't be empty!");
+            check.ifEmptyThrow(user_name, "username can't be empty!");
+            check.ifEmptyThrow(pass, "password can't be empty!");
 
             var user = this.getUserFromBL(user_name, pass);
+
+            this.saveUserToStore(user, remember);
+
             this.refresFromUserData(user);
         },
 
@@ -96,6 +67,26 @@
             }
 
             return user;
+        },
+
+        saveUserToStore: function (user, remember) {
+
+            if (remember) {
+                amplify.store("user", user);
+            } else {
+                amplify.store("user", user, { expires: 7200000 });
+            }
+        },
+
+        reinitFromStore: function () {
+            
+            var user = amplify.store("user");
+
+            if (!check.isempty(user)) {
+
+                this.refresFromUserData(user);
+            }
+
         },
 
         refresFromUserData: function (user) {
@@ -122,14 +113,14 @@
         },
 
         checkEmailUsernamePassPassagain: function (email, username, pass, passagain) {
-            this.check.ifEmptyThrow(email, "email can't be empty!");
-            this.check.ifIsNotEmailThrow(email, "You must enter a valid e-mail");
+            check.ifEmptyThrow(email, "email can't be empty!");
+            check.ifIsNotEmailThrow(email, "You must enter a valid e-mail");
 
-            this.check.ifEmptyThrow(username, "username can't be empty!");
-            this.check.ifEmptyThrow(pass, "password can't be empty!");
-            this.check.ifEmptyThrow(passagain, "you have to retype your password");
+            check.ifEmptyThrow(username, "username can't be empty!");
+            check.ifEmptyThrow(pass, "password can't be empty!");
+            check.ifEmptyThrow(passagain, "you have to retype your password");
 
-            this.check.ifPassAndPassAgainisNotSameThrow(pass, passagain, "the two password is not same");
+            check.ifPassAndPassAgainisNotSameThrow(pass, passagain, "the two password is not same");
         },
 
         signOut: function () {
@@ -144,6 +135,8 @@
             this.preferred_delivery = null;
             this.isAuthenticated(false);
             this.isAdmin(false);
+
+            amplify.store("user", null);
         }
     };
 });

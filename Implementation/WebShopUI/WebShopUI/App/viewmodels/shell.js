@@ -1,8 +1,12 @@
-﻿define(['durandal/app', 'durandal/system'],
-    function (app, sys) {
+﻿define([
+    'durandal/app',
+    'durandal/system',
+    'core/data/user'
+],function (app, sys, user) {
 
     return {
         activate: function () {
+            user.reinitFromStore();
             toastrOptionInit();
         },
         activeMainType: null,

@@ -1,88 +1,4 @@
-﻿//var BusinesLogic = {
-//    productController: {
-//        getProduct: function (ProductId) {
-//            return new product(ProductId, "teszt", "CreatorPista", 50, 25, "http://www.clipartsfree.net/vector/medium/18177-tv-test-screen-art-design.png");
-//        },
-
-//        getProducts: function (ProductTypeId) {
-//            return [];
-//        },
-
-//        getProductsByType: function (ProductTypeId) {
-//            return [];
-//        },
-
-//        createProduct: function (product) {
-
-//        },
-
-//        modifyProduct: function (product) {
-
-//        },
-
-//        deleteProduct: function (product) {
-
-//        }
-
-//    
-
-//    productTypeController: {
-//        getRootProductTypes: function () {
-//            var names = ["Books", "Antique"];
-//            var ids = [1, 2];
-
-//            var ret = [];
-
-//            for (var i in names) {
-//                ret.push(new ProductType(null, null, names[i], ids[i], 20, null));
-//            }
-
-//            return ret;
-//        },
-
-//        getChildProductTypes: function (ProductTypeId) {
-
-//        },
-
-//        getAncestorTypes: function (ProductTypeId) {
-
-//        },
-
-//        createProductType: function (ProductType) {
-
-//        },
-
-//        modifyProductType: function (ProductType) {
-
-//        },
-
-//        deleteProductType: function (ProductType) {
-
-//        }
-//    },
-
-//    UserController: {
-//        getUser: function (UserName, Password) {
-
-//        },
-
-//        createUser: function (user) {
-
-//        },
-
-//        modifyUser: function (user) {
-
-//        },
-
-//        deleteUser: function (user) {
-
-//        }
-
-//    }
-
-//}
-
-function ProductType(mainType, parentType, typeName, typeId, productCount, subTypes) {
+﻿function ProductType(mainType, parentType, typeName, typeId, productCount, subTypes) {
     this.mainType = mainType;
     this.parentType = parentType;
     this.typeName = typeName;
@@ -165,5 +81,6 @@ function userEntity() {
     this.preferred_delivery = {
         delivery_method: "personal",
         selectedStore: "bp. 2. sz üzlet",
+        delivery_price: 80
     };
 }

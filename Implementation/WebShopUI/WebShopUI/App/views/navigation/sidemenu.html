@@ -9,19 +9,15 @@
         </li>
 
         <li class="active">
-            <a href="#" data-bind="text: activeTypeName, attr: { href:  activeTypeHash }"></a>
+            <a data-bind="text: activeTypeName, attr: { href:  activeTypeHash }"></a>
         </li>
 
-        <li>
-            <a>
-                <span class="text-warning" data-bind="click: newProd"> Admin: Create New Product In Type</span>
-            </a>
+        <li data-bind="click: newProd, visible: isAdmin">
+            <a href="#" class="text-warning clickable">Admin: Create New Product In Type</a>
         </li>
 
-        <li>
-            <a>
-                <span class="text-warning" data-bind="click: newType"> Admin: Create New SubType </span>
-            </a>
+        <li data-bind="click: newType, visible: isAdmin">
+            <a href="#" class="text-warning clickable">Admin: Create New SubType</a>
         </li>
 
 
@@ -29,9 +25,9 @@
 
         <li class="">
             <a data-bind="attr: { href: hash }">
-                <!-- visible: isAdmin -->
-                <span class="glyphicon glyphicon-wrench" data-bind="click: $root.modifyType, visible: $root.isAdmin"></span>
-                <span class="glyphicon glyphicon-remove" data-bind="click: $root.deleteType, visible: $root.isAdmin"></span>
+
+                <span class="glyphicon glyphicon-wrench text-warning" data-bind="click: $root.modifyType, visible: $root.isAdmin">mod</span>
+                <span class="glyphicon glyphicon-remove text-danger" data-bind="click: $root.deleteType, visible: $root.isAdmin">del</span>
 
                 <span class="glyphicon glyphicon-chevron-right"></span>
 

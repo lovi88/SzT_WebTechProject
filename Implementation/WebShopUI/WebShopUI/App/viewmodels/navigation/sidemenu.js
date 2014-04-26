@@ -1,101 +1,101 @@
-﻿define(
+﻿/// <reference path="../../core/admin/admin.js" />
+define(
     [
+        'require',
         'durandal/system',
         'durandal/app',
         'viewmodels/navigation/mainmenu',
         'core/data/user',
         'busineslogic/productTypeController',
         'busineslogic/productController'
-    ],
-    function (sys, app, mainmenu, user, productTypeController, productController) {
-       
-        return {
-            activeType: null,
-            activeTypeName: ko.observable(),
-            activeTypeHash: ko.observable(),
+],
+function (require, sys, app, mainmenu, user, productTypeController, productController) {
+    var admin = null;
+    
+    if (user.isAdmin()) {
+        require(['core/admin/admin'], function (adm) {
+            admin = adm;
+        });
+    }
 
-            parentType: null,
-            parentTypeName: ko.observable(),
-            parentTypeHash: ko.observable(),
+    return {
+        activeType: null,
+        activeTypeName: ko.observable(),
+        activeTypeHash: ko.observable(),
 
-            childTypes: ko.observableArray(),
+        parentType: null,
+        parentTypeName: ko.observable(),
+        parentTypeHash: ko.observable(),
 
-            isAdmin: user.isAdmin,
+        childTypes: ko.observableArray(),
 
-            setActiveTypeById: function (activeTypeId) {
+        isAdmin: user.isAdmin,
 
-                this.reinitActive(activeTypeId);
-                this.reinitParent();
-                this.reinitChildren(activeTypeId);
-            },
+        setActiveTypeById: function (activeTypeId) {
 
-            reinitActive: function (activeTypeId) {
-                at = this.getTypeById(activeTypeId);
+            this.reinitActive(activeTypeId);
+            this.reinitParent();
+            this.reinitChildren(activeTypeId);
+        },
 
-                this.activeType = at;
-                this.activeTypeName(at.typeName);
-                this.activeTypeHash(at.hash);
-            },
+        reinitActive: function (activeTypeId) {
+            at = this.getTypeById(activeTypeId);
 
-            reinitParent: function () {
-                pi = this.activeType.parentType;
-                pt = this.getTypeById(pi);
+            this.activeType = at;
+            this.activeTypeName(at.typeName);
+            this.activeTypeHash(at.hash);
+        },
 
-                this.parentType = pt;
-                this.parentTypeName(pt.typeName);
-                this.parentTypeHash(pt.hash);
-            },
+        reinitParent: function () {
+            pi = this.activeType.parentType;
+            pt = this.getTypeById(pi);
 
-            reinitChildren: function (activeTypeId) {
-                this.childTypes(this.getChildTypes(activeTypeId));
-            },
+            this.parentType = pt;
+            this.parentTypeName(pt.typeName);
+            this.parentTypeHash(pt.hash);
+        },
 
-            getTypeById: function (id) {
-                return productTypeController.getProductType(id);
-            },
+        reinitChildren: function (activeTypeId) {
+            this.childTypes(this.getChildTypes(activeTypeId));
+        },
 
-            getChildTypes: function (id) {
-                return productTypeController.getChildProductTypes(id);
-            },
+        getTypeById: function (id) {
+            return productTypeController.getProductType(id);
+        },
 
-            activate: function () {
-                this.setActiveTypeById(0);
-            },
+        getChildTypes: function (id) {
+            return productTypeController.getChildProductTypes(id);
+        },
 
-            newType: function () {
-                app.showMessage('mock...');
-            },
+        activate: function () {
+            this.setActiveTypeById(0);
+        },
 
-            newProd: function () {
-                app.showMessage('mock...');
-            },
+        newProd: function () {
+            admin.newProduct();
+        },
 
-            deleteType: function (t) {
-                var message = "Biztos törli: " + t.typeName + "? (mock, nem működik)";
-                message = dict.TranslateText(message, 0);
+        newType: function () {
+            admin.newType();
+        },
 
-                var title = dict.TranslateText("Terméktípus törlése", 0);
+        deleteType: function (t) {
+            admin.deleteType(t)
+        },
 
-                var options = [
-                    dict.TranslateText("Yes", 1),
-                    dict.TranslateText("No", 1)
-                ];
+        modifyType: function (productType) {
 
-                app.showMessage(message, title, options).then(function (dialogResult) {
-                    //sys.log(dialogResult);
-                });
-            },
-            modifyType: function (productType) {
-                //app.showMessage('mock...');
+            admin.modifyType();
+            //app.showMessage('mock...');
 
-                //app.productType("asd").then(function (dialogResult) {
-                //    // use dialogResult.checkedValue here
-                //});
-                //("message", "title", ["y", "n"])
+            //app.productType("asd").then(function (dialogResult) {
+            //    // use dialogResult.checkedValue here
+            //});
+            //("message", "title", ["y", "n"])
 
-                //app.showDialog(new modal({ title: "alma" }));
+            //app.showDialog(new modal({ title: "alma" }));
 
-            }
+        }
 
-        };
-    });
+    };
+});

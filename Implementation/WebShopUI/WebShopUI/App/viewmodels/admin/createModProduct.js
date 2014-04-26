@@ -5,7 +5,7 @@
 ], function (sys, app, dialog) {
     return {
         activate: function () {
-            sys.log();
+            
         },
 
         close: function () {

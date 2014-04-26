@@ -9,7 +9,7 @@
         UnicIdentifier: 32,
 
         isAuthenticated: ko.observable(false),
-        isAdmin: ko.observable(false),
+        isAdmin: ko.observable(true),
 
         profile_data: {
             name: ko.observable(""),

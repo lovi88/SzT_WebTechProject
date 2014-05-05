@@ -8,6 +8,10 @@
         activate: function () {
             user.reinitFromStore();
             toastrOptionInit();
+
+            //test
+            sys.log(user.isAuthenticated())
+
         },
         activeMainType: null,
         activeSideType: null,

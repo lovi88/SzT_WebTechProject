@@ -1,0 +1,41 @@
+﻿<form class="form-horizontal">
+    <fieldset>
+        <!-- Sign In Form -->
+        <!-- Text input-->
+        <div class="control-group">
+            <label class="control-label" for="userid">Alias (Username):</label>
+            <div class="controls">
+                <input data-bind="value: username" id="userid" name="userid" type="text" class="form-control" placeholder="JoeSixpack" required="" />
+            </div>
+        </div>
+
+        <!-- Password input-->
+        <div class="control-group">
+            <label class="control-label" for="passwordinput">Password:</label>
+            <div class="controls">
+                <input data-bind="value: password" id="passwordinput" name="passwordinput" class="form-control" type="password" placeholder="********" />
+            </div>
+        </div>
+
+        <!-- Multiple Checkboxes (inline) -->
+        <div class="control-group">
+            <label class="control-label" for="rememberme"></label>
+            <div class="controls">
+                <label class="checkbox inline" for="rememberme-0">
+                    <input type="checkbox" data-bind="checked: remember" name="rememberme" id="rememberme-0" value="Remember me" />
+                    Remember me
+                </label>
+            </div>
+        </div>
+
+        <!-- Button -->
+        <div class="control-group">
+            <label class="control-label" for="signin"></label>
+            <div class="controls">
+                <button id="signin" name="signin" data-bind="click: signIn" class="btn btn-success">Sign In</button>
+            </div>
+        </div>
+
+
+    </fieldset>
+</form>

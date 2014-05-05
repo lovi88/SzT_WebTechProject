@@ -1,0 +1,17 @@
+﻿<!--Main Navigation-->
+<div data-bind="compose:'viewmodels/navigation/mainmenu'"></div>
+
+<!--Breadcrumbs-->
+<div data-bind="compose:'viewmodels/navigation/breadcrumb'"></div>
+
+<div class="container-fluid page-host">
+    <!--Sidebar Pills Menu-->
+    <div data-bind="compose:'viewmodels/navigation/sidemenu'"></div>
+
+    <!--Content-->
+    <div class="col-md-9" data-bind="router: { transition:'entrance', cacheViews:false }">
+
+    </div>
+
+
+</div>

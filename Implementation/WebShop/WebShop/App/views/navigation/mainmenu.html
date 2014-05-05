@@ -1,0 +1,126 @@
+﻿<nav class="navbar navbar-inverse navbar-static-top container-fluid" role="navigation">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#MainMenu">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+            <!-- Brand -->
+            <a class="navbar-brand" href="#">Lovas WebShop</a>
+
+            <div class="loader pull-right" data-bind="css: { visible: router.isNavigating }">
+                <i class="icon-spinner icon-2x icon-spin fa fa-spinner fa-spin" style="color:#fff"></i>
+            </div>
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse " id="MainMenu">
+
+            <!--Menu Links-->
+            <ul class="nav navbar-nav" data-bind="foreach: router.navigationModel">
+
+                <li data-bind="css: { active: isActive }">
+                    <a data-bind="attr: { href: hash }, html: title"></a>
+                </li>
+            </ul>
+
+
+            <!--User Profile-->
+            <p data-bind="visible: authenticated()" class="navbar-text navbar-right">
+                Signed in as
+                <span data-bind="text: userName"></span>
+            </p>
+            <ul data-bind="visible: authenticated" class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        <span data-bind="text: userName"></span> <span class="glyphicon glyphicon-cog"></span><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#Profile">Edit Billing Data</a></li>
+                        <li><a href="#Profile">Edit Profile Data</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#" data-bind="click: signOut">Sign Out</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <!--Sign In/Up-->
+            <ul data-bind="visible: !authenticated()" class="nav navbar-nav navbar-right">
+                <li><a href="#Sign">Sign Up</a></li>
+                <li class="divider"></li>
+
+                <!-- ko compose: { model: 'viewmodels/sign/signIn', view:'views/sign/MenuSigIn.html' } --><!-- /ko -->
+
+            </ul>
+
+            <ul data-bind="if: isDebug" class="nav navbar-nav navbar-brand">
+                <li data-bind="click: debug">FireDebugMethod!</li>
+            </ul>
+
+            <!--Cart-->
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        Cart <span class="glyphicon glyphicon-shopping-cart"></span><b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#Cart">View Cart</a></li>
+
+                        <li data-bind="if: cart_prods().length > 0">
+                            <a data-bind="click: cart_checkout" href="#">
+                                Checkout Cart
+                            </a>
+                        </li>
+
+                        <li class="divider"></li>
+                        <li><a href="#">Products in your cart:</a></li>
+
+
+                        <li data-bind="if: cart_prods().length < 1">
+                            <a href="#">Your cart is empty</a>
+                        </li>
+
+
+                        <!-- ko foreach: cart_prods -->
+                        <li>
+
+                            <a data-bind="attr: { href : URLPath }">
+                                <span data-bind="text: productName">Kosármban lévő termék n.</span>
+                            </a>
+                        </li>
+                        <!-- /ko -->
+
+                    </ul>
+                </li>
+            </ul>
+
+            <!--Search Bar-->
+            <div class="col-sm-3 col-md-3 pull-right">
+                <form class="navbar-form" role="search" data-bind="submit:search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search Product" name="srch-term" id="srch-term">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit"> <span class="glyphicon glyphicon-search"></span> </button>
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" tabindex="-1">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a href="#">Összetett keresés</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </form>
+            </div>
+
+
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--afsdg <span data-bind="text: router.activeInstruction().config.title"></span>-->

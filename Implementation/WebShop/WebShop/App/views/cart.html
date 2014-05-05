@@ -1,0 +1,82 @@
+﻿<div>
+    <div class="row">
+        <div class="col-xs-8">
+
+            <div data-bind="compose: 'viewmodels/shoppingProcessStatus'"></div>
+
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <div class="panel-title">
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <h5><span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart</h5>
+                            </div>
+                            <div class="col-xs-6">
+                                <a href="#Products" class="btn btn-primary btn-sm btn-block">
+                                    <span class="glyphicon glyphicon-share-alt"></span> Continue shopping
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-body">
+
+                    <strong data-bind="if: products().length==0"> Your cart is empty! </strong>
+
+                    <!-- ko foreach: products -->
+                    <div class="row">
+                        <div class="col-xs-2">
+                            <a data-bind="attr: { href: URLPath }">
+                                <img class="img-responsive" src="http://placehold.it/100x70">
+                            </a>
+                        </div>
+                        <div class="col-xs-4">
+                            <h4 class="product-name">
+                                <strong data-bind="text: productName">Product name</strong>
+                            </h4>
+                            <h4>
+                                <small data-bind="text: caption">Product description</small>
+                            </h4>
+                        </div>
+                        <div class="col-xs-6">
+                            <div class="col-xs-6 text-right">
+                                <h6>
+                                    <strong>
+                                        <span data-bind="text: discountPrice"></span> <!--<span class="text-muted">x</span>-->
+                                    </strong>
+                                </h6>
+                            </div>
+                            <!--<div class="col-xs-4">
+                                <input type="text" class="form-control input-sm" value="1">
+                            </div>-->
+                            <div class="col-xs-2">
+                                <button data-bind="click: $parent.deleteProductFromChart" type="button" class="btn btn-link btn-xs">
+                                    <span class="glyphicon glyphicon-trash"> </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <!-- /ko -->
+
+
+                </div>
+                <div class="panel-footer">
+                    <div class="row text-center">
+                        <div class="col-xs-9">
+                            <h4 class="text-right">
+                                Total
+                                <strong data-bind="text: totalCost">$50.00</strong>
+                            </h4>
+                        </div>
+                        <div class="col-xs-3">
+                            <button type="button" data-bind="enable: products().length>0, click: checkoutCart" class="btn btn-success btn-block">
+                                Checkout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

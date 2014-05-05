@@ -23,10 +23,18 @@
 
         <!-- ko foreach: childTypes -->
 
+
+        <li>alma</li>
+        <li data-bind="text: $root.isAdmin">
+            asd
+
+        </li>
+
         <li class="">
             <a data-bind="attr: { href: hash }">
 
-                <span class="glyphicon glyphicon-wrench text-warning" data-bind="click: $root.modifyType, visible: $root.isAdmin">mod</span>
+                <span class="glyphicon glyphicon-wrench text-warning" data-bind="click: $root.modifyType, visible: $root.isAdmin()">mod</span>
+
                 <span class="glyphicon glyphicon-remove text-danger" data-bind="click: $root.deleteType, visible: $root.isAdmin">del</span>
 
                 <span class="glyphicon glyphicon-chevron-right"></span>

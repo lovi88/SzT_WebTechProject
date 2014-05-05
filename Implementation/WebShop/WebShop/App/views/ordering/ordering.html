@@ -1,0 +1,100 @@
+﻿<div>
+    <!-- Ordered Products -->
+
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Ordered Products</h3>
+        </div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Name
+                    </th>
+
+                    <th>
+                        Price
+                    </th>
+
+                    <th>
+                        Discounted Price
+                    </th>
+                </tr>
+
+            </thead>
+
+            <tbody data-bind="foreach: cart_prods">
+                <tr>
+                    <td data-bind="text: productName" class="col-md-4"></td>
+
+                    <td data-bind="text: price" class="col-md-4"></td>
+
+                    <td data-bind="text: discountPrice" class="col-md-4"></td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <div class="panel-body">
+            <div>
+                Products Total Cost: <span data-bind="text: cart_prod_cost"></span>
+            </div>
+
+            <div data-bind="visible: delivery_method() == 'shipping'" >
+                Shipping Cost: <span data-bind="text: delivery_price"></span>
+            </div>
+
+            <div>
+                <strong>Total Cost: </strong> <strong data-bind="text: cart_prod_cost"></strong>
+            </div>
+            
+        </div>
+
+    </div>
+
+
+    <!-- Preferred Delivery -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Check your preferred delivery</h3>
+        </div>
+        <div class="panel-body">
+            <div data-bind="compose: 'viewmodels/profile/prefered_delivery' "></div>
+        </div>
+    </div>
+
+    <!-- Delivery Address -->
+    <div class="panel panel-default" data-bind="visible: delivery_method() == 'shipping'">
+        <div class="panel-heading">
+            <h3 class="panel-title">Check your delivery address</h3>
+        </div>
+        <div class="panel-body">
+            <div data-bind="compose: 'viewmodels/profile/delivery_address' "></div>
+        </div>
+    </div>
+
+
+    <!-- Billing Address -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Check your billing data</h3>
+        </div>
+        <div class="panel-body">
+            <div data-bind="compose: 'viewmodels/profile/billing_address' "></div>
+        </div>
+    </div>
+
+    <!-- Send Order -->
+
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h3 class="panel-title">If all of your data is valid, then you can send your order here</h3>
+        </div>
+        <div class="panel-body">
+            <button data-bind="click: sendOrder" class="btn btn-block btn-success">Send Order</button>
+        </div>
+    </div>
+
+
+</div>

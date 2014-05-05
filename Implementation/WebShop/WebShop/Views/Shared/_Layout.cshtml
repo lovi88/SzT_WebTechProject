@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link href="Content/ie10mobile.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+
+    <link href="Content/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="Content/font-awesome.min.css" rel="stylesheet" />
+
+
+    <link href="Content/durandal.css" rel="stylesheet" />
+    <link href="Content/starterkit.css" rel="stylesheet" />
+
+    <link href="Content/SiteLocal/ProcessStatus.css" rel="stylesheet" />
+    <link href="Content/SiteLocal/SiteMain.css" rel="stylesheet" />
+
+    @*@Styles.Render("~/Content/WebShopStyles")*@
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+
+    @RenderBody()
+
+    @*@Scripts.Render("~/bundles/jquery")*@
+
+    <!--libs-->
+    @*@Scripts.Render("~/bundles/WebShopLibs")*@
+
+    <script src="Scripts/jquery-2.1.0.min.js"></script>
+
+    <script src="Scripts/bootstrap.min.js"></script>
+
+    <script src="Scripts/knockout-2.3.0.js"></script>
+
+    <script src="Scripts/amplify_1_1_2/amplify.min.js"></script>
+
+    <script src="Scripts/toastr.min.js"></script>
+
+    <script src="Scripts/jquery.csv-0.71.min.js"></script>
+
+    <!--Lovas Istvan Core Helpers-->
+    @Scripts.Render("~/bundles/WebShopHelpers")
+
+
+    <!--Rquire JS App Start-->
+    <script src="Scripts/require.js" data-main="App/main"></script>
+
+    @RenderSection("scripts", required: false)
+
+</body>
+</html>

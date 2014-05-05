@@ -1,0 +1,11 @@
+﻿<ol class="breadcrumb" data-bind="foreach: breadcrumbs">
+    <li data-bind="visible: !isActive"><a data-bind="text: name,attr: {href: link}"></a></li>
+    <li data-bind="visible: isActive" class="active"><span data-bind="text: name"></span></li>
+</ol>
+
+
+<!--<ol class="breadcrumb">
+    <li><a href="#">Teszt 1 breadcrumb</a></li>
+    <li><a href="#">Teszt 2</a></li>
+    <li class="active">Teszt 3</li>
+</ol>-->

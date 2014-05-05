@@ -1,0 +1,42 @@
+﻿<div class="col-md-3">
+    <!--display:none/block bindingolható lesz, ha valamelyik aloldal rejtené-->
+    <ul class="nav nav-pills nav-stacked">
+        <li class="">
+            <a href="#">
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <span data-bind="text: parentTypeName, attr: { href: parentTypeHash }"></span>
+            </a>
+        </li>
+
+        <li class="active">
+            <a data-bind="text: activeTypeName, attr: { href:  activeTypeHash }"></a>
+        </li>
+
+        <li data-bind="click: newProd, visible: isAdmin">
+            <a href="#" class="text-warning clickable">Admin: Create New Product In Type</a>
+        </li>
+
+        <li data-bind="click: newType, visible: isAdmin">
+            <a href="#" class="text-warning clickable">Admin: Create New SubType</a>
+        </li>
+
+
+        <!-- ko foreach: childTypes -->
+
+        <li class="">
+            <a data-bind="attr: { href: hash }">
+
+                <span class="glyphicon glyphicon-wrench text-warning" data-bind="click: $root.modifyType, visible: $root.isAdmin">mod</span>
+                <span class="glyphicon glyphicon-remove text-danger" data-bind="click: $root.deleteType, visible: $root.isAdmin">del</span>
+
+                <span class="glyphicon glyphicon-chevron-right"></span>
+
+                <span data-bind="text: typeName"></span>
+            </a>
+        </li>
+
+        <!-- /ko -->
+
+    </ul>
+
+</div>

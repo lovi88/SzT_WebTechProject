@@ -36,11 +36,15 @@ namespace WebShopApiTest
         [TestMethod]
         public void PostUser_GoodScenario_ShouldReturn()
         {
+            //Arrange
             controller = new UserController(new TestShopContext());
             var u = GetTestUser();
 
+
+            //Act
             var result = controller.PostUser(u);
 
+            //Assert
             Assert.IsNotNull(result);
 
         }

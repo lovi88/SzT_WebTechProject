@@ -12,11 +12,11 @@
                     Name: UserName,
                     Pass: Password
                 },
-                success: function () {
-    
+                success: function (data) {
+                    alert(data);
                 },
-                error: function () {
-
+                error: function (data) {
+                    alert(data);
                 }
 
             });

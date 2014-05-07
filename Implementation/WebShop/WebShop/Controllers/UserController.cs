@@ -68,29 +68,29 @@ namespace WebShop.Controllers
         }
 
         // POST api/User
-        public HttpResponseMessage PostUser(User user)
+        public IHttpActionResult PostUser(User user)
         {
             if (!ModelState.IsValid)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                return BadRequest(ModelState);
             }
 
             var u = db.Users.Where(x => x.Email == user.Email).FirstOrDefault();
 
             if (u != null)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "The given Email is in our system");
+                return BadRequest("The given email address is already used by another customer");
             }
 
             db.Users.Add(user);
             db.SaveChanges();
 
-            HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, user);
-            response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = user.ID }));
-            return response;
+            //HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, user);
+            //response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = user.ID }));
+            //return response;
 
-
-            CreatedAtRoute
+            return CreatedAtRoute("DefaultApi", new { id = user.ID }, user);
+            
         }
 
         // DELETE api/User/5

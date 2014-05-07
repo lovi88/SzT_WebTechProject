@@ -9,6 +9,12 @@ namespace WebShop.Models
 {
     public class User
     {
+        public User()
+        {
+            BirthDate = DateTime.Now;
+        }
+
+
         [Key]
         public int ID { get; set; }
 

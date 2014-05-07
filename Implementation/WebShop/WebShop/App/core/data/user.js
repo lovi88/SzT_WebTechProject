@@ -109,7 +109,7 @@
 
             UserController.createUser(email, username, pass, passagain);
 
-            this.signIn(username, pass);
+            //this.signIn(username, pass);
         },
 
         checkEmailUsernamePassPassagain: function (email, username, pass, passagain) {

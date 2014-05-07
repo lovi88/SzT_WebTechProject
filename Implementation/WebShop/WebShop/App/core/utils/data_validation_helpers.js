@@ -35,7 +35,7 @@ var check = {
     },
 
     ifPassAndPassAgainisNotSameThrow: function (pass, passAgain, message) {
-        if (this.passPassAgainisSame(pass, passAgain)) {
+        if (!this.passPassAgainisSame(pass, passAgain)) {
             throw message;
         }
     },

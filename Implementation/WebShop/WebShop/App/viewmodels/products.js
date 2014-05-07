@@ -20,6 +20,7 @@
 
             this.addToChart = function (data) {
                 cart.addProductToCart(data);
+
                 toast_success_click("Added To Cart: ", data.productName, function () {
                     router.navigate("#Cart");
                 });

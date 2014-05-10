@@ -191,6 +191,8 @@
     <Content Include="App\core\utils\koMappingsHelper.js" />
     <Content Include="App\core\utils\toast_help.js" />
     <Content Include="App\main.js" />
+    <Content Include="App\Tests\UserTest.html" />
+    <Content Include="App\Tests\UserTest.js" />
     <Content Include="App\viewmodels\admin\createModProduct.js" />
     <Content Include="App\viewmodels\admin\createModType.js" />
     <Content Include="App\viewmodels\admin\importProductsFromCSV.js" />
@@ -260,6 +262,7 @@
     <Content Include="Content\images\icon.png" />
     <Content Include="Content\images\ios-startup-image-landscape.png" />
     <Content Include="Content\images\ios-startup-image-portrait.png" />
+    <Content Include="Content\qunit.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\SiteLocal\ProcessStatus.css" />
     <Content Include="Content\SiteLocal\SiteMain.css" />
@@ -362,6 +365,7 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\qunit.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -394,7 +398,9 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <None Include="App\core\multilingual\dictionary.ts_" />

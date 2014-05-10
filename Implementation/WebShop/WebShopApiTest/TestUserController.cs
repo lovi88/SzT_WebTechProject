@@ -34,7 +34,7 @@ namespace WebShopApiTest
         #endregion
 
         [TestMethod]
-        public void PostUser_GoodScenario_ShouldReturn()
+        public void PostUser_GoodScenario_ShouldReturnCreatedUser()
         {
             //Arrange
             controller = new UserController(new TestShopContext());
@@ -46,6 +46,8 @@ namespace WebShopApiTest
 
             //Assert
             Assert.IsNotNull(result);
+
+
 
         }
 

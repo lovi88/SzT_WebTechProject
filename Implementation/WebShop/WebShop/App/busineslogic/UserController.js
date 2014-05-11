@@ -3,30 +3,34 @@
 
 define(['durandal/system'], function (sys) {
     return {
-        getUser: function (UserEmail,UserName, Password) {
-            
+        getUser: function (UserName, Password, context) {
+            var that = this;
+
             //GetUserByNamePass
-            alert("get user");
-            
             amplify.request({
                 resourceId: "GetUserByNamePass",
                 data: {
-                    Email: UserEmail,
                     Name: UserName,
-                    Pass: Password
+                    PasswordHash: Password
                 },
                 success: function (data) {
-                    alert(data);
+
+                    sys.log("GetUser")
+                    sys.log(that.serverUserToJsUser(data))
+                    sys.log(data);
+
+                    context.getUserFromBLSuccess(that.serverUserToJsUser(data));
                 },
                 error: function (data) {
-                    alert(data);
+                    sys.log(data);
+                    context.getUserFromBLFail(data);
                 }
-
             });
         },
 
-        createUser: function (email, username, pass, passagain) {
+        createUser: function (email, username, pass, passagain, context) {
             alert("create user");
+            var that = this;
 
             amplify.request({
                 resourceId: "CreateUser",
@@ -36,30 +40,40 @@ define(['durandal/system'], function (sys) {
                     PasswordHash: pass
                 },
                 success: function (data) {
-                    alert("succ");
-                    sys.log(data)
+                    context.signUpSuccess(that.serverUserToJsUser(data));
                 },
                 error: function (data) {
-                    alert("fail");
-
-                    sys.log(data)
+                    context.signUpProblem(data);
                 }
 
             });
         },
 
-        modifyUser: function (user) {
+        modifyUser: function (user, context) {
             alert("mod user");
+            var that = this;
 
-            amplify.request("ModifyUser",
-                {
-                    id: user.Uid
+            var svUsr = that.jsUserToServerUser(user);
+
+            svUser["id"] = user.Uid;
+
+            sys.log("svUser");
+            sys.log(svUser);
+
+            amplify.request({
+                resourceId: "ModifyUser",
+                data: svUser,
+                success: function (data) {
+                    alert("succ");
+
+                    context.saveUserModificationsSuccess(data);
                 },
+                error: function (data) {
 
-                function (data) {
-
+                    context.saveUserModificationsFail(data);
                 }
-            );
+
+            });
         },
 
         deleteUser: function (user) {
@@ -75,7 +89,7 @@ define(['durandal/system'], function (sys) {
 
             jsUser = new userEntity();
 
-            jsUser.uid = svUser.UId;
+            jsUser.UId = svUser.UId;
             jsUser.isAdmin = svUser.IsAdmin;
 
             jsUser.profile_data.name = svUser.Name;
@@ -102,7 +116,7 @@ define(['durandal/system'], function (sys) {
         jsUserToServerUser: function (jsUser) {
             svUser = new serverUser();
 
-            svUser.UId = jsUser.uid;
+            svUser.UId = jsUser.UId;
             svUser.IsAdmin = jsUser.isAdmin;
 
             svUser.Name = jsUser.profile_data.name;
@@ -122,6 +136,8 @@ define(['durandal/system'], function (sys) {
             svUser.DeliveryMethod = jsUser.preferred_delivery.delivery_method;
             svUser.SelectedStore = jsUser.preferred_delivery.selectedStore;
             svUser.DeliveryPrice = jsUser.preferred_delivery.delivery_price;
+
+            svUser.PasswordHash = jsUser.passHash;
 
             return svUser;
         }

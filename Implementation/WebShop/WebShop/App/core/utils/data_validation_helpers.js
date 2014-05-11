@@ -7,6 +7,10 @@
     return false;
 }
 
+function isFunction(fnc) {
+    return (typeof (fnc) == "function");
+}
+
 function isNullOrUndefinedOrEmpty(param) {
     nu = isNullOrUndefined(param);
 

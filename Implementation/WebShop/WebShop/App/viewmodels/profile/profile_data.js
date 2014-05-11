@@ -40,8 +40,8 @@
 
                     this.saveNameEmailBirth();
 
-                    toastr.info("Your changes has been saved.");
-
+                    user.saveUserModifications();
+                    
                 } catch (ex) {
                     toastr.warning(ex);
                 }

@@ -12,7 +12,7 @@
         "hideEasing": "linear",
         "showMethod": "fadeIn",
         "hideMethod": "fadeOut"
-    }
+    };
 }
 
 function toast_success(title, message) {

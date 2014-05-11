@@ -4,12 +4,14 @@
     'busineslogic/UserController'
 ], function (sys, app, UserController) {
     return {
-
+        
         UId: 1,
         UnicIdentifier: 32,
 
         isAuthenticated: ko.observable(false),
-        isAdmin: ko.observable(true),
+        isAdmin: ko.observable(false),
+
+        passHash: null,
 
         profile_data: {
             name: ko.observable(""),
@@ -37,36 +39,37 @@
             delivery_price: "80"
         },
 
-        savePass: function (old_ps, newpass, newpsagain) {
-            check.ifEmptyThrow(old_ps, "Jelszó módosításnál meg kell adnia eredeti jelszavát");
-            check.ifEmptyThrow(newpass, "Jelszó módosításnál az új jelszava nem lehet üres");
-            check.ifEmptyThrow(newpsagain, "A jelszavát meg kell ismételnie");
+        signInCallback: null,
+        remember: null,
+        signIn: function (user_name, pass, remember, callback) {
 
-            check.ifPassAndPassAgainisNotSameThrow(newpass, newpsagain, "A két jelszó nem egyezik meg");
-
-            UserController.modifyUserPass(this.UId, newpass);
-        },
-
-        signIn: function (user_name, pass, remember) {
+            this.signInCallback = callback;
+            this.remember = remember;
 
             check.ifEmptyThrow(user_name, "username can't be empty!");
             check.ifEmptyThrow(pass, "password can't be empty!");
 
-            var user = this.getUserFromBL(user_name, pass);
-
-            this.saveUserToStore(user, remember);
-
-            this.refresFromUserData(user);
+            this.getUserFromBL(user_name, pass);
         },
 
         getUserFromBL: function (user_name, pass) {
-            var user = UserController.getUser(user, pass);
+            UserController.getUser(user_name, pass, this);
+        },
 
-            if (isNullOrUndefinedOrEmpty(user)) {
-                throw "wrong username or password";
-            }
+        getUserFromBLSuccess: function (user) {
+            this.saveUserToStore(user, this.remember);
+            this.refresFromUserData(user);
 
-            return user;
+            this.signInCallback(true);
+        },
+
+        getUserFromBLFail:function (err_data) {
+            sys.log(err_data);
+
+            toastr.warning("wrong username or password");
+            
+            this.signInCallback(false);
+
         },
 
         saveUserToStore: function (user, remember) {
@@ -104,12 +107,24 @@
             this.preferred_delivery = user.preferred_delivery;
         },
 
-        signUp: function (email, username, pass, passagain) {
+        signUpCallback: null,
+        signUp: function (email, username, pass, passagain, signUpCallback) {
+            this.signUpCallback = signUpCallback;
             this.checkEmailUsernamePassPassagain(email, username, pass, passagain);
 
-            usr = UserController.createUser(email, username, pass, passagain);
+            UserController.createUser(email, username, pass, passagain, this);
+        },
+
+        signUpSuccess: function (usr) {
+            sys.log("mizus?")
+            sys.log(usr)
 
             this.refresFromUserData(usr);
+            this.signUpCallback(true);
+        },
+
+        signUpProblem: function (data) {
+            this.signUpCallback(false);
         },
 
         checkEmailUsernamePassPassagain: function (email, username, pass, passagain) {
@@ -122,6 +137,45 @@
 
             check.ifPassAndPassAgainisNotSameThrow(pass, passagain, "the two password is not same");
         },
+
+        savePass: function (old_ps, newpass, newpsagain) {
+            check.ifEmptyThrow(old_ps, "Jelszó módosításnál meg kell adnia eredeti jelszavát");
+            check.ifEmptyThrow(newpass, "Jelszó módosításnál az új jelszava nem lehet üres");
+            check.ifEmptyThrow(newpsagain, "A jelszavát meg kell ismételnie");
+
+            check.ifPassAndPassAgainisNotSameThrow(newpass, newpsagain, "A két jelszó nem egyezik meg");
+
+            this.passHash = newpass;
+
+            this.saveUserModifications();
+        },
+
+        saveUserModifications: function () {
+            UserController.modifyUser(this.asRowUser(), this);
+
+        },
+
+        asRowUser: function () {
+            usr = new userEntity();
+
+            for (var attr in this) {
+                usr[attr] = this[attr];
+            }
+
+            usr.profile_data.name = this.profile_data.name();
+            usr.isAdmin = this.isAdmin();
+
+            return usr;
+        },
+
+        saveUserModificationsSuccess: function (data) {
+            toastr.info("Your changes has been saved.");
+        },
+
+        saveUserModificationsFail: function (data) {
+            toastr.warning("Your changes has not been saved.");
+        },
+
 
         signOut: function () {
             this.UId = 0;
@@ -138,5 +192,7 @@
 
             amplify.store("user", null);
         }
+
+
     };
 });

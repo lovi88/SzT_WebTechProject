@@ -203,6 +203,7 @@
     <Content Include="App\core\utils\koMappingsHelper.js" />
     <Content Include="App\core\utils\toast_help.js" />
     <Content Include="App\main.js" />
+    <Content Include="App\Tests\FastDebug\ControllersDebug.js" />
     <Content Include="App\Tests\UserTest.html" />
     <Content Include="App\Tests\UserTest.js" />
     <Content Include="App\viewmodels\admin\createModProduct.js" />
@@ -378,7 +379,9 @@
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\qunit.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>

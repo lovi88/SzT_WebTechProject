@@ -55,7 +55,7 @@ function cartProduct(product) {
 }
 
 function userEntity() {
-    this.uid = 0;
+    this.UId = 0;
     this.isAdmin = false;
 
     this.profile_data = {
@@ -83,6 +83,8 @@ function userEntity() {
         selectedStore: "bp. 2. sz üzlet",
         delivery_price: 80
     };
+
+    this.passHash = "";
 }
 
 function serverUser() {
@@ -106,5 +108,7 @@ function serverUser() {
     this.DeliveryMethod = "";
     this.SelectedStore = "";
     this.DeliveryPrice = "";
+
+    this.PasswordHash = "";
 
 }

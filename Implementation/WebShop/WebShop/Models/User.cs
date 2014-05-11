@@ -53,7 +53,7 @@ namespace WebShop.Models
 
         #endregion
 
-        public string DeliveryMthod { get; set; }
+        public string DeliveryMethod { get; set; }
 
         public string SelectedStore { get; set; }
 

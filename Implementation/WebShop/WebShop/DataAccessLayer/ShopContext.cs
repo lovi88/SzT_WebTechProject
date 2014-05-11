@@ -13,8 +13,9 @@ namespace WebShop.DataAccessLayer
     {
         public ShopContext()
         {
-            InitDebugEnvironment();
+            //InitDebugEnvironment();
             
+
         }
 
 

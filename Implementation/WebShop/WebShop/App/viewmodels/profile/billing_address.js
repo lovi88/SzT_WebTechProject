@@ -34,7 +34,8 @@
                 ba.zip_code = this.zip_code();
                 ba.road_num = this.road_num();
 
-                toastr.info("Your changes has been saved.");
+                user.saveUserModifications();
+
             },
 
             cancelChanges: function () {

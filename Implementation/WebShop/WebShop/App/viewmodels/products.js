@@ -48,25 +48,23 @@
             };
 
             initProducts = function (id) {
-                var prods = [];
-
+               
                 if (id === 0) {
-                    prods = getAllProducts();
+                    getAllProducts();
                 } else {
-                    prods = getProductsOfProductTypeId(id);
+                    getProductsOfProductTypeId(id);
                 }
 
                 //sys.log(prods);
-
-                that.Products(prods);
+                //that.Products(prods);
             };
 
             getAllProducts = function () {
-                return productController.getAllProducts();
+                productController.getAllProducts();
             };
 
             getProductsOfProductTypeId = function (id) {
-                return productController.getProductsByType(id);
+                productController.getProductsByType(id);
             };
 
             refreshBreadCrumb = function (catId) {

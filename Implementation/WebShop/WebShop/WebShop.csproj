@@ -191,6 +191,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App\busineslogic\ApiDefinitions.js" />
+    <Content Include="App\busineslogic\fakeControllers.js" />
     <Content Include="App\busineslogic\orderingController.js" />
     <Content Include="App\busineslogic\productController.js" />
     <Content Include="App\busineslogic\productTypeController.js" />
@@ -410,6 +411,8 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App\images\large\products\" />
+    <Folder Include="App\images\small\products\" />
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>

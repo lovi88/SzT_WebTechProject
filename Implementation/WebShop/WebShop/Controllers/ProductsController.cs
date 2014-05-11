@@ -22,11 +22,6 @@ namespace WebShop.Controllers
             db = new ShopContext();
         }
 
-        // GET: api/Products
-        public IQueryable<Product> GetProducts()
-        {
-            return db.Products;
-        }
 
         // GET: api/Products/5
         [ResponseType(typeof(Product))]
@@ -40,6 +35,20 @@ namespace WebShop.Controllers
 
             return Ok(product);
         }
+
+        // GET: api/Products
+        public IQueryable<Product> GetProducts()
+        {
+            return db.Products;
+        }
+
+        //// GET: api/Products/bytype/5
+        //[ActionName("bytype")]
+        //public IQueryable<Product> GetProductsByType(int TypeId)
+        //{
+        //   //return db.Products.Where(p => p.ProductType.TypeId == TypeId);
+        //    
+        //}
 
         // PUT: api/Products/5
         [ResponseType(typeof(void))]

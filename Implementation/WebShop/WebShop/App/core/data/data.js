@@ -1,4 +1,6 @@
-﻿function ProductType(mainType, parentType, typeName, typeId, productCount, subTypes) {
+﻿var fakeControllers = true;
+
+function ProductType(mainType, parentType, typeName, typeId, productCount, subTypes) {
     this.mainType = mainType;
     this.parentType = parentType;
     this.typeName = typeName;
@@ -22,15 +24,60 @@ function product(productID, productName, creator, price, discountPrice) {
     this.price = price;
     this.discountPrice = discountPrice;
 
-    this.productType = 1;
+    this.productTypeID = 1;
 
-    this.URLPath = "#Product/" + this.productName + "/" + this.productID;
+    this.urlPath = "#Product/" + this.productName + "/" + this.productID;
+
+    this.smallImg = "App/images/large/prod_" + this.productID;
+    this.largeImg = "App/images/small/prod_" + this.productID;
+
     this.smallImg = "http://placehold.it/170x180";
     this.largeImg = "http://placehold.it/800x300";
 
-    this.displayPrice = dict.TranslateText("Price", 1);
-    this.displayDiscountPrice = dict.TranslateText("Discounted", 1);
-    this.displayCreator = "";
+    //this.displayPrice = dict.TranslateText("Price", 1);
+    //this.displayDiscountPrice = dict.TranslateText("Discounted", 1);
+    //this.displayCreator = "";
+}
+
+function productJsFromSvArray(sv_product_array) {
+
+    var js_product_array = [];
+
+    for (var key in sv_product_array) {
+        js_product_array.push(new productJsFromSv(sv_product_array[key]));
+    }
+
+    return js_product_array;
+}
+
+function productJsFromSv(sv_product) {
+    
+    for (var k in sv_product) {
+        tkey = convertSvAttrNameToJsAttrName(k);
+        this[tkey] = sv_product[k];
+    }
+
+    this.urlPath = "#Product/" + sv_product.ProductName + "/" + sv_product.ProductID;
+
+    this.smallImg = "App/images/large/prod_" + sv_product.ProductID;
+    this.largeImg = "App/images/small/prod_" + sv_product.ProductID;
+
+}
+
+
+function convertSvAttrNameToJsAttrName(attr) {
+    return attr.charAt(0).toLowerCase() + attr.slice(1);
+}
+
+function productSvFromJs(js_product) {
+
+}
+
+function convertJsAttrNameToSvAttrName(attr) {
+    result = attr;
+    result[0] = result[0].toUpperCase();
+
+    return result;
 }
 
 function cartProduct(product) {
@@ -48,7 +95,7 @@ function cartProduct(product) {
 
     this.productType = product.productType;
 
-    this.URLPath = product.URLPath;
+    this.urlPath = product.urlPath;
     this.smallImg = product.smallImg;
     this.largeImg = product.largeImg;
 

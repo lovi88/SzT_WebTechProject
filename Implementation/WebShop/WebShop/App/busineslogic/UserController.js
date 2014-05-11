@@ -2,10 +2,15 @@
 //var c = require('busineslogic/UserController')
 
 define(['durandal/system'], function (sys) {
+
+    if (fakeControllers) {
+        return new fakeUserController();
+    }
+
     return {
         getUser: function (UserName, Password, context) {
+            
             var that = this;
-
             //GetUserByNamePass
             amplify.request({
                 resourceId: "GetUserByNamePass",
@@ -14,11 +19,6 @@ define(['durandal/system'], function (sys) {
                     PasswordHash: Password
                 },
                 success: function (data) {
-
-                    sys.log("GetUser")
-                    sys.log(that.serverUserToJsUser(data))
-                    sys.log(data);
-
                     context.getUserFromBLSuccess(that.serverUserToJsUser(data));
                 },
                 error: function (data) {
@@ -29,7 +29,6 @@ define(['durandal/system'], function (sys) {
         },
 
         createUser: function (email, username, pass, passagain, context) {
-            alert("create user");
             var that = this;
 
             amplify.request({
@@ -50,12 +49,11 @@ define(['durandal/system'], function (sys) {
         },
 
         modifyUser: function (user, context) {
-            alert("mod user");
             var that = this;
 
             var svUsr = that.jsUserToServerUser(user);
 
-            svUser["id"] = user.Uid;
+            svUser.id = user.Uid;
 
             sys.log("svUser");
             sys.log(svUser);
@@ -64,12 +62,9 @@ define(['durandal/system'], function (sys) {
                 resourceId: "ModifyUser",
                 data: svUser,
                 success: function (data) {
-                    alert("succ");
-
                     context.saveUserModificationsSuccess(data);
                 },
                 error: function (data) {
-
                     context.saveUserModificationsFail(data);
                 }
 
@@ -77,11 +72,8 @@ define(['durandal/system'], function (sys) {
         },
 
         deleteUser: function (user) {
-
-            alert("del user");
-
             amplify.request("DeleteUser", { id: user.Uid }, function (data) {
-                alert("User Deleted");
+                toastr.info("User Deleted");
             });
         },
 

@@ -17,7 +17,10 @@ namespace WebShop
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                //defaults: null,
+                //constraints: new  { id= @"^\d+$" } //all digits
             );
+
         }
     }
 }

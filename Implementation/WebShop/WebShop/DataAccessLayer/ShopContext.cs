@@ -9,13 +9,12 @@ using WebShop.Models;
 
 namespace WebShop.DataAccessLayer
 {
-    public class ShopContext: DbContext, IShopContext
+    public class ShopContext : DbContext, IShopContext
     {
         public ShopContext()
         {
+            //DeleteDbIfInDevelopment();
             //InitDebugEnvironment();
-            
-
         }
 
 
@@ -30,13 +29,25 @@ namespace WebShop.DataAccessLayer
         }
 
         [Conditional("DEBUG")]
-        private void InitDebugEnvironment() {
-            DeleteDbIfInDevelopment();
+        private void InitDebugEnvironment()
+        {
+            ProductTypes.Add(
+                new ProductType()
+                {
+                    TypeId = 1,
+                    TypeName = "TestType1",
+                    ProductCount = 10,
+                });
+
+
+
+            SaveChanges();
         }
 
         //teszt Törlöm a db-t, hogy ne keljen szívni a migrációkkal
         [Conditional("DEBUG")]
-        private void DeleteDbIfInDevelopment() {
+        private void DeleteDbIfInDevelopment()
+        {
             this.Database.Delete();
         }
 

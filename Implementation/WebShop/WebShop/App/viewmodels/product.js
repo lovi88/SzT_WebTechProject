@@ -5,10 +5,18 @@
         'plugins/router',
         'busineslogic/productController'
     ], function (system, cart, router, productController) {
+        self = null;
         return {
             product: null,
+            prodCallback: function (isSuccessful, data) {
+                self.product = data;
+            },
+
             activate: function (productName, ProductId) {
-                this.product = productController.getProduct(ProductId);
+                self = this;
+
+                productController.getProduct(ProductId, this.prodCallback);
+
                 system.log(product);
             },
             addToChart: function () {

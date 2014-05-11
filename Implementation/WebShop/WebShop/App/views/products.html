@@ -1,8 +1,10 @@
 ﻿<div>
 
     <button data-bind="visible: isTestMode, click: generateTestProducts">genTesztProducts</button>
-    <h1 data-bind="text: displayName"></h1>
+    <button data-bind="visible: isTestMode, click: generateTestProductsToDB">generateTestProductsToDB</button>
 
+
+    <h1 data-bind="text: displayName"></h1>
 
     <!-- Products - thumbnails -->
     <div data-bind="foreach: Products">
@@ -10,7 +12,7 @@
         <div class="col-sm-6 col-md-4">
 
             <div class="col-sm-3 col-md-2" style="min-width:200px;">
-                <a href="#" class="thumbnail" data-bind="attr: { href: URLPath }">
+                <a href="#" class="thumbnail" data-bind="attr: { href: urlPath }">
                     <img src="" alt="" data-bind="attr: {src: smallImg, alt: caption}" class="img-responsive img-rounded" />
                 </a>
             </div>
@@ -21,12 +23,11 @@
 
                     <div data-bind="text: caption"></div>
 
-                    <span data-bind="text: displayPrice"></span>:
+                    <span>Price</span>:
                     <span data-bind="text: price"></span> <br />
 
-                    <span data-bind="text: displayDiscountPrice"></span>:
+                    <span>DiscountPrice</span>:
                     <strong data-bind="text: discountPrice"></strong>
-
 
                     <p>
                         <a href="#" class="btn btn-primary" role="button" data-bind="text: $parent.displayToCart, click: $parent.addToChart"></a>

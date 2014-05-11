@@ -9,6 +9,7 @@
         'busineslogic/productController'
     ],
     function (sys, app, breadcrumb, sidemenu, cart, router, productController) {
+        var self
 
         var allproducts = function () {
             var that = this;
@@ -31,6 +32,8 @@
             this.activate = function (MainCat, MainCatId, ActCat, ActCatID) {
                 catId = validId(MainCatId, ActCatID);
 
+                self = this;
+
                 initProducts(catId);
                 refreshBreadCrumb(catId);
                 refresSideMenu(catId);
@@ -47,24 +50,35 @@
                 }
             };
 
+            filterId = 0;
             initProducts = function (id) {
-               
-                if (id === 0) {
-                    getAllProducts();
-                } else {
-                    getProductsOfProductTypeId(id);
-                }
+                filterId = id;
+                getProducts();
 
                 //sys.log(prods);
                 //that.Products(prods);
             };
 
-            getAllProducts = function () {
-                productController.getAllProducts();
+            getProducts = function () {
+                productController.getAllProducts(productsReadyCallback);
             };
+            
+            productsReadyCallback = function (ok, data) {
+                if (!ok) {
+                    return;
+                }
 
-            getProductsOfProductTypeId = function (id) {
-                productController.getProductsByType(id);
+                prods = data;
+
+                if (filterId !== 0) {
+                    prods.filter(function (elem) {
+                        return elem.productTypeID == filterId;
+                    });
+                }
+
+                self.Products(prods);
+
+                sys.log(prods)
             };
 
             refreshBreadCrumb = function (catId) {
@@ -87,6 +101,22 @@
                     that.Products.push(actual);
                 }
             };
+
+            productCreatedCallback = function (ok, data) {
+                
+            }
+
+            this.generateTestProductsToDB = function () {
+                var times = 1;
+
+                for (var i = 0; i < times; i++) {
+
+                    //(productID, productName, creator, price, discountPrice)
+                    actual = new product(i, "pname" + i, "creator" + i, 25 * i, 20 * i);
+
+                    productController.createProduct(actual, productCreatedCallback);
+                }
+            }
 
         };
 

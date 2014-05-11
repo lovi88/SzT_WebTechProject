@@ -16,7 +16,7 @@ namespace WebShop.Models
 
 
         [Key]
-        public int ID { get; set; }
+        public int UId { get; set; }
 
         public bool IsAdmin { get; set; }
 
@@ -39,25 +39,25 @@ namespace WebShop.Models
 
         public string DeliveryCity { get; set; }
 
-        public string DeliveryZip_code { get; set; }
+        public string DeliveryZipCode { get; set; }
 
-        public string DeliveryRoad_num { get; set; }
+        public string DeliveryRoadNum { get; set; }
 
         public string BillingCountry { get; set; }
 
         public string BillingCity { get; set; }
 
-        public string BillingZip_code { get; set; }
+        public string BillingZipCode { get; set; }
 
-        public string BillingRoad_num { get; set; }
+        public string BillingRoadNum { get; set; }
 
         #endregion
 
-        public string Delivery_method { get; set; }
+        public string DeliveryMthod { get; set; }
 
         public string SelectedStore { get; set; }
 
-        public string Delivery_price { get; set; }
+        public string DeliveryPrice { get; set; }
 
     }
 }

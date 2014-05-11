@@ -13,15 +13,15 @@ using WebShop.DataAccessLayer;
 
 namespace WebShop.Controllers
 {
-    public class UserController : ApiController
+    public class UserController_Old : ApiController
     {
         private IShopContext db;
 
-        public UserController() {
+        public UserController_Old() {
             db = new ShopContext();
         }
 
-        public UserController(IShopContext context)
+        public UserController_Old(IShopContext context)
         {
             db = context;
         }
@@ -48,7 +48,7 @@ namespace WebShop.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (id != user.ID)
+            if (id != user.UId)
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
@@ -89,7 +89,7 @@ namespace WebShop.Controllers
             //response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = user.ID }));
             //return response;
 
-            return CreatedAtRoute("DefaultApi", new { id = user.ID }, user);
+            return CreatedAtRoute("DefaultApi", new { id = user.UId }, user);
             
         }
 

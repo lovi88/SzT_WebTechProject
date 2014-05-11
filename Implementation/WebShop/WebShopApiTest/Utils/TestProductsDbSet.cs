@@ -7,11 +7,11 @@ using WebShop.Models;
 
 namespace WebShopApiTest.Utils
 {
-    class TestUsersDbSet: TestDbSet<User>
+    class TestProductsDbSet: TestDbSet<Product>
     {
-        public override User Find(params object[] keyValues)
+        public override Product Find(params object[] keyValues)
         {
-            return this.SingleOrDefault(user => user.UId == (int)keyValues.Single());
+            return this.SingleOrDefault(prod => prod.ProductID == (int)keyValues.Single());
         }
 
     }

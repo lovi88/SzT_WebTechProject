@@ -77,6 +77,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestUserController.cs" />
     <Compile Include="Utils\TestDbSet.cs" />
+    <Compile Include="Utils\TestOrderingsDbSet.cs" />
+    <Compile Include="Utils\TestProductsDbSet.cs" />
+    <Compile Include="Utils\TestProductTypesDbSet.cs" />
     <Compile Include="Utils\TestShopContext.cs" />
     <Compile Include="Utils\TestUsersDbSet.cs" />
   </ItemGroup>

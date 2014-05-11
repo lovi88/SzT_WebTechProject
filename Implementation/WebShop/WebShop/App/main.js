@@ -4,8 +4,8 @@
         'text': '../Scripts/text',
         'durandal': '../Scripts/durandal',
         'plugins': '../Scripts/durandal/plugins',
-        'transitions': '../Scripts/durandal/transitions'
-        'qUnit' : 
+        'transitions': '../Scripts/durandal/transitions',
+        'QUnit': "../Scripts/qunit.js"
     }
 });
 

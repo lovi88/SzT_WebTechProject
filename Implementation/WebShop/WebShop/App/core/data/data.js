@@ -84,3 +84,27 @@ function userEntity() {
         delivery_price: 80
     };
 }
+
+function serverUser() {
+    this.UId = "";
+    this.IsAdmin = "";
+
+    this.Name = "";
+    this.Email = "";
+    this.BirthDate = "";
+
+    this.DeliveryCountry = "";
+    this.DeliveryCity = "";
+    this.DeliveryZipCode = "";
+    this.DeliveryRoadNum = "";
+
+    this.BillingCountry = "";
+    this.BillingCity = "";
+    this.BillingZipCode = "";
+    this.BillingRoadNum = "";
+
+    this.DeliveryMethod = "";
+    this.SelectedStore = "";
+    this.DeliveryPrice = "";
+
+}

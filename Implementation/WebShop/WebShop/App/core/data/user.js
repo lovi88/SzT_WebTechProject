@@ -107,9 +107,9 @@
         signUp: function (email, username, pass, passagain) {
             this.checkEmailUsernamePassPassagain(email, username, pass, passagain);
 
-            UserController.createUser(email, username, pass, passagain);
+            usr = UserController.createUser(email, username, pass, passagain);
 
-            //this.signIn(username, pass);
+            this.refresFromUserData(usr);
         },
 
         checkEmailUsernamePassPassagain: function (email, username, pass, passagain) {

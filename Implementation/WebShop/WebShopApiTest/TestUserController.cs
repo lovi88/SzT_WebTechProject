@@ -9,7 +9,7 @@ namespace WebShopApiTest
     [TestClass]
     public class TestUserController
     {
-        UserController_Old controller;
+        UsersController controller;
 
         #region TestInitialisation
         
@@ -37,7 +37,7 @@ namespace WebShopApiTest
         public void PostUser_GoodScenario_ShouldReturnCreatedUser()
         {
             //Arrange
-            controller = new UserController_Old(new TestShopContext());
+            controller = new UsersController(new TestShopContext());
             var u = GetTestUser();
 
 
@@ -48,8 +48,11 @@ namespace WebShopApiTest
             Assert.IsNotNull(result);
 
 
-
         }
+
+
+
+
 
 
         private User GetTestUser(){

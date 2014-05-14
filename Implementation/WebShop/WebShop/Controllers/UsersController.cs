@@ -16,10 +16,16 @@ namespace WebShop.Controllers
     public class UsersController : ApiController
     {
         private IShopContext db;
+        
 
         public UsersController()
         {
             db = new ShopContext();
+        }
+
+        public UsersController(IShopContext ShopContext)
+        {
+            this.db = ShopContext;
         }
 
         //// GET: api/Users

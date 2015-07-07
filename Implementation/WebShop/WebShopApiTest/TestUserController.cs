@@ -46,8 +46,7 @@ namespace WebShopApiTest
 
             //Assert
             Assert.IsNotNull(result);
-
-
+            
         }
 
         [TestMethod]
@@ -81,7 +80,7 @@ namespace WebShopApiTest
 
             //Act
             
-            var result = controller.PostUser(u);
+            //var result = controller.PostUser(u);
 
             //Assert
             //Can be missed: Name, Email, Pass

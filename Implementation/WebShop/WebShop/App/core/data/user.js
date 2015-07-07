@@ -8,8 +8,8 @@
         UId: 1,
         UnicIdentifier: 32,
 
-        isAuthenticated: ko.observable(false),
-        isAdmin: ko.observable(false),
+        isAuthenticated: ko.observable(true),
+        isAdmin: ko.observable(true),
 
         passHash: null,
 
